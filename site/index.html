@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Streaming Plan Recovery Dataset</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Dataset browser</p>
+        <h1>Streaming Plan Recovery</h1>
+      </div>
+      <a class="download" href="data/dataset.json" download>Download JSON</a>
+    </header>
+
+    <main>
+      <section class="summary-band">
+        <div class="summary">
+          <div>
+            <span id="recordCount">0</span>
+            <p>records</p>
+          </div>
+          <div>
+            <span id="candidateCount">0</span>
+            <p>candidate clips</p>
+          </div>
+          <div>
+            <span id="sourceCount">0</span>
+            <p>source pointers</p>
+          </div>
+        </div>
+        <p id="taskText" class="task"></p>
+      </section>
+
+      <section class="controls" aria-label="Dataset controls">
+        <label>
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="title, domain, cue, source">
+        </label>
+        <label>
+          <span>Domain</span>
+          <select id="domainFilter">
+            <option value="all">All domains</option>
+          </select>
+        </label>
+        <label>
+          <span>Type</span>
+          <select id="typeFilter">
+            <option value="all">All records</option>
+            <option value="candidate">Candidates</option>
+            <option value="source">Sources</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="records" id="records" aria-live="polite"></section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,360 @@
+{
+  "name": "Streaming Plan Recovery",
+  "task": "Detect when the user's observed trajectory is diverging from their intended plan, and produce a timely intervention that helps them recover.",
+  "generated_at": "2026-05-26T23:47:15.103545+00:00",
+  "min_score": 3,
+  "deviation_cues": {
+    "wrong_action": [
+      "wrong",
+      "mistake",
+      "messed up",
+      "accidentally",
+      "shouldn't have"
+    ],
+    "omission": [
+      "forgot",
+      "missed",
+      "skipped",
+      "left out"
+    ],
+    "correction": [
+      "fix",
+      "redo",
+      "correct",
+      "start over",
+      "try again"
+    ],
+    "search_failure": [
+      "can't find",
+      "couldn't find",
+      "where is",
+      "lost"
+    ],
+    "route_failure": [
+      "wrong turn",
+      "missed turn",
+      "got lost",
+      "went the wrong way"
+    ],
+    "recovery": [
+      "had to go back",
+      "turn around",
+      "reroute",
+      "backtrack"
+    ]
+  },
+  "records": [
+    {
+      "id": "source_egoper",
+      "record_type": "source",
+      "title": "EgoPER",
+      "url": "https://www.khoury.northeastern.edu/home/eelhami/egoper.htm",
+      "domain": "cooking",
+      "source_family": "EgoPER",
+      "priority": 1,
+      "deviation_type": "procedural_errors",
+      "score": 9,
+      "status": "source_pointer",
+      "summary": "Egocentric cooking videos with explicit error taxonomy including slip, correction, modification, addition, and omission.",
+      "best_use": "Streaming recipe-following assistance.",
+      "annotation": null
+    },
+    {
+      "id": "source_captaincook4d",
+      "record_type": "source",
+      "title": "CaptainCook4D",
+      "url": "https://captaincook4d.github.io/captain-cook/",
+      "domain": "cooking",
+      "source_family": "CaptainCook4D",
+      "priority": 1,
+      "deviation_type": "recipe_following_deviations",
+      "score": 9,
+      "status": "source_pointer",
+      "summary": "Participants follow recipe instructions correctly or deliberately induce errors.",
+      "best_use": "Wrong step, wrong order, missing ingredient, and recovery examples.",
+      "annotation": null
+    },
+    {
+      "id": "source_assembly101",
+      "record_type": "source",
+      "title": "Assembly101",
+      "url": "https://assembly-101.github.io/",
+      "domain": "assembly",
+      "source_family": "Assembly101",
+      "priority": 1,
+      "deviation_type": "mistake_detection",
+      "score": 9,
+      "status": "source_pointer",
+      "summary": "Large multi-view assembly videos with natural mistakes and correction segments.",
+      "best_use": "Object-state and step-order deviation.",
+      "annotation": null
+    },
+    {
+      "id": "source_egooops",
+      "record_type": "source",
+      "title": "EgoOops",
+      "url": "https://arxiv.org/abs/2410.05343",
+      "domain": "procedural",
+      "source_family": "EgoOops",
+      "priority": 1,
+      "deviation_type": "plan_conditioned_mistakes",
+      "score": 9,
+      "status": "source_pointer",
+      "summary": "Small, clean setting with explicit text plan, video, mistake labels, and descriptions.",
+      "best_use": "Plan-conditioned deviation detection.",
+      "annotation": null
+    },
+    {
+      "id": "source_ata",
+      "record_type": "source",
+      "title": "ATA",
+      "url": "https://usa.honda-ri.com/ata",
+      "domain": "assembly",
+      "source_family": "ATA",
+      "priority": 1,
+      "deviation_type": "sequential_assembly_anomalies",
+      "score": 9,
+      "status": "source_pointer",
+      "summary": "Toy assembly recordings designed around procedural anomaly detection.",
+      "best_use": "Controlled anomaly and recovery modeling.",
+      "annotation": null
+    },
+    {
+      "id": "source_shopping_visual_search_data",
+      "record_type": "source",
+      "title": "Shopping visual-search data",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1077314224002108",
+      "domain": "shopping",
+      "source_family": "Shopping visual-search data",
+      "priority": 2,
+      "deviation_type": "missed_target_or_wrong_object",
+      "score": 8,
+      "status": "source_pointer",
+      "summary": "Known target product and first-person search trajectory.",
+      "best_use": "Detect moving away from target shelf, missing product, or fixating wrong item.",
+      "annotation": null
+    },
+    {
+      "id": "source_lookout___aria_navigation_dataset",
+      "record_type": "source",
+      "title": "LookOut / Aria Navigation Dataset",
+      "url": "https://arxiv.org/abs/2508.14466",
+      "domain": "navigation",
+      "source_family": "LookOut / Aria Navigation Dataset",
+      "priority": 2,
+      "deviation_type": "route_failure",
+      "score": 8,
+      "status": "source_pointer",
+      "summary": "Navigation behavior includes rerouting, slowing down, looking around, and obstacle handling.",
+      "best_use": "Infer path deviation from trajectory, gaze, and route behavior.",
+      "annotation": null
+    },
+    {
+      "id": "source_egocampus",
+      "record_type": "source",
+      "title": "EgoCampus",
+      "url": "https://arxiv.org/abs/2512.07668",
+      "domain": "navigation",
+      "source_family": "EgoCampus",
+      "priority": 2,
+      "deviation_type": "route_failure",
+      "score": 8,
+      "status": "source_pointer",
+      "summary": "Pedestrian navigation with gaze, GPS, IMU, and RGB.",
+      "best_use": "Compare intended path to observed path or hesitation/backtracking.",
+      "annotation": null
+    },
+    {
+      "id": "source_ego4d___epic___hd_epic",
+      "record_type": "source",
+      "title": "Ego4D / EPIC / HD-EPIC",
+      "url": "https://ego4d-data.org/",
+      "domain": "daily_life",
+      "source_family": "Ego4D / EPIC / HD-EPIC",
+      "priority": 3,
+      "deviation_type": "filtered_transcript_deviations",
+      "score": 7,
+      "status": "source_pointer",
+      "summary": "Large daily egocentric activity corpora can be filtered by narration and transcript cues.",
+      "best_use": "Scale after filtering for forgot, wrong, fix, and go back evidence.",
+      "annotation": null
+    },
+    {
+      "id": "nav_001",
+      "record_type": "candidate",
+      "title": "Wrong turn POV walking campus",
+      "url": "https://example.com/nav_001",
+      "domain": "navigation",
+      "source_family": "LookOut / Aria Navigation Dataset",
+      "priority": 2,
+      "deviation_type": "wrong_action",
+      "score": 13,
+      "status": "candidate",
+      "summary": "Walking navigation clip with a missed hallway",
+      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
+      "cue_hits": [
+        {
+          "category": "wrong_action",
+          "phrase": "wrong",
+          "field": "title",
+          "weight": 3
+        },
+        {
+          "category": "route_failure",
+          "phrase": "wrong turn",
+          "field": "title",
+          "weight": 3
+        },
+        {
+          "category": "omission",
+          "phrase": "missed",
+          "field": "description",
+          "weight": 2
+        },
+        {
+          "category": "wrong_action",
+          "phrase": "wrong",
+          "field": "transcript",
+          "weight": 1
+        },
+        {
+          "category": "wrong_action",
+          "phrase": "wrong",
+          "field": "transcript",
+          "weight": 1
+        },
+        {
+          "category": "omission",
+          "phrase": "missed",
+          "field": "transcript",
+          "weight": 1
+        },
+        {
+          "category": "route_failure",
+          "phrase": "went the wrong way",
+          "field": "transcript",
+          "weight": 1
+        },
+        {
+          "category": "recovery",
+          "phrase": "turn around",
+          "field": "transcript",
+          "weight": 1
+        }
+      ],
+      "annotation": {
+        "goal": "Walk to the lab building",
+        "current_state": "Needs visual review",
+        "expected_next_state": "Needs visual review",
+        "deviation_type": "wrong_action",
+        "intervention_needed": true,
+        "intervention_timing": "around transcript cue",
+        "intervention_window": {
+          "start_seconds": 18,
+          "deviation_onset_seconds": 48,
+          "end_seconds": 78
+        },
+        "assistant_response": "This looks like it may not match the intended plan. Confirm before proceeding with: Walk to the lab building",
+        "license": "review_required"
+      }
+    },
+    {
+      "id": "cook_001",
+      "record_type": "candidate",
+      "title": "First person cooking mistake: forgot the eggs",
+      "url": "https://example.com/cook_001",
+      "domain": "cooking",
+      "source_family": "YouTube/web mining",
+      "priority": 2,
+      "deviation_type": "omission",
+      "score": 8,
+      "status": "candidate",
+      "summary": "POV cooking clip where the user realizes a missing ingredient",
+      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
+      "cue_hits": [
+        {
+          "category": "wrong_action",
+          "phrase": "mistake",
+          "field": "title",
+          "weight": 3
+        },
+        {
+          "category": "omission",
+          "phrase": "forgot",
+          "field": "title",
+          "weight": 3
+        },
+        {
+          "category": "omission",
+          "phrase": "forgot",
+          "field": "transcript",
+          "weight": 1
+        },
+        {
+          "category": "correction",
+          "phrase": "fix",
+          "field": "transcript",
+          "weight": 1
+        }
+      ],
+      "annotation": {
+        "goal": "Make pancake batter",
+        "current_state": "Needs visual review",
+        "expected_next_state": "Needs visual review",
+        "deviation_type": "omission",
+        "intervention_needed": true,
+        "intervention_timing": "around transcript cue",
+        "intervention_window": {
+          "start_seconds": 44,
+          "deviation_onset_seconds": 74,
+          "end_seconds": 104
+        },
+        "assistant_response": "It looks like a required step or item may have been skipped. Check the plan before continuing: Make pancake batter",
+        "license": "review_required"
+      }
+    },
+    {
+      "id": "shop_001",
+      "record_type": "candidate",
+      "title": "Grocery trip went wrong",
+      "url": "https://example.com/shop_001",
+      "domain": "shopping",
+      "source_family": "Shopping visual-search data",
+      "priority": 2,
+      "deviation_type": "wrong_action",
+      "score": 4,
+      "status": "candidate",
+      "summary": "Shopper passes the drinks aisle and has to return for orange juice",
+      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
+      "cue_hits": [
+        {
+          "category": "wrong_action",
+          "phrase": "wrong",
+          "field": "title",
+          "weight": 3
+        },
+        {
+          "category": "omission",
+          "phrase": "missed",
+          "field": "transcript",
+          "weight": 1
+        }
+      ],
+      "annotation": {
+        "goal": "Buy orange juice canned tuna and KitKat",
+        "current_state": "Needs visual review",
+        "expected_next_state": "Needs visual review",
+        "deviation_type": "wrong_action",
+        "intervention_needed": true,
+        "intervention_timing": "around transcript cue",
+        "intervention_window": {
+          "start_seconds": 102,
+          "deviation_onset_seconds": 132,
+          "end_seconds": 162
+        },
+        "assistant_response": "This looks like it may not match the intended plan. Confirm before proceeding with: Buy orange juice canned tuna and KitKat",
+        "license": "review_required"
+      }
+    }
+  ]
+}

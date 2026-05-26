@@ -1,0 +1,95 @@
+{
+  "benchmark_name": "Streaming Plan Recovery",
+  "task": "Detect when the user's observed trajectory is diverging from their intended plan, and produce a timely intervention that helps them recover.",
+  "deviation_cues": {
+    "wrong_action": ["wrong", "mistake", "messed up", "accidentally", "shouldn't have"],
+    "omission": ["forgot", "missed", "skipped", "left out"],
+    "correction": ["fix", "redo", "correct", "start over", "try again"],
+    "search_failure": ["can't find", "couldn't find", "where is", "lost"],
+    "route_failure": ["wrong turn", "missed turn", "got lost", "went the wrong way"],
+    "recovery": ["had to go back", "turn around", "reroute", "backtrack"]
+  },
+  "source_families": [
+    {
+      "name": "EgoPER",
+      "priority": 1,
+      "domain": "cooking",
+      "deviation_type": "procedural_errors",
+      "why_it_fits": "Egocentric cooking videos with explicit error taxonomy including slip, correction, modification, addition, and omission.",
+      "best_use": "Streaming recipe-following assistance.",
+      "url": "https://www.khoury.northeastern.edu/home/eelhami/egoper.htm"
+    },
+    {
+      "name": "CaptainCook4D",
+      "priority": 1,
+      "domain": "cooking",
+      "deviation_type": "recipe_following_deviations",
+      "why_it_fits": "Participants follow recipe instructions correctly or deliberately induce errors.",
+      "best_use": "Wrong step, wrong order, missing ingredient, and recovery examples.",
+      "url": "https://captaincook4d.github.io/captain-cook/"
+    },
+    {
+      "name": "Assembly101",
+      "priority": 1,
+      "domain": "assembly",
+      "deviation_type": "mistake_detection",
+      "why_it_fits": "Large multi-view assembly videos with natural mistakes and correction segments.",
+      "best_use": "Object-state and step-order deviation.",
+      "url": "https://assembly-101.github.io/"
+    },
+    {
+      "name": "EgoOops",
+      "priority": 1,
+      "domain": "procedural",
+      "deviation_type": "plan_conditioned_mistakes",
+      "why_it_fits": "Small, clean setting with explicit text plan, video, mistake labels, and descriptions.",
+      "best_use": "Plan-conditioned deviation detection.",
+      "url": "https://arxiv.org/abs/2410.05343"
+    },
+    {
+      "name": "ATA",
+      "priority": 1,
+      "domain": "assembly",
+      "deviation_type": "sequential_assembly_anomalies",
+      "why_it_fits": "Toy assembly recordings designed around procedural anomaly detection.",
+      "best_use": "Controlled anomaly and recovery modeling.",
+      "url": "https://usa.honda-ri.com/ata"
+    },
+    {
+      "name": "Shopping visual-search data",
+      "priority": 2,
+      "domain": "shopping",
+      "deviation_type": "missed_target_or_wrong_object",
+      "why_it_fits": "Known target product and first-person search trajectory.",
+      "best_use": "Detect moving away from target shelf, missing product, or fixating wrong item.",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1077314224002108"
+    },
+    {
+      "name": "LookOut / Aria Navigation Dataset",
+      "priority": 2,
+      "domain": "navigation",
+      "deviation_type": "route_failure",
+      "why_it_fits": "Navigation behavior includes rerouting, slowing down, looking around, and obstacle handling.",
+      "best_use": "Infer path deviation from trajectory, gaze, and route behavior.",
+      "url": "https://arxiv.org/abs/2508.14466"
+    },
+    {
+      "name": "EgoCampus",
+      "priority": 2,
+      "domain": "navigation",
+      "deviation_type": "route_failure",
+      "why_it_fits": "Pedestrian navigation with gaze, GPS, IMU, and RGB.",
+      "best_use": "Compare intended path to observed path or hesitation/backtracking.",
+      "url": "https://arxiv.org/abs/2512.07668"
+    },
+    {
+      "name": "Ego4D / EPIC / HD-EPIC",
+      "priority": 3,
+      "domain": "daily_life",
+      "deviation_type": "filtered_transcript_deviations",
+      "why_it_fits": "Large daily egocentric activity corpora can be filtered by narration and transcript cues.",
+      "best_use": "Scale after filtering for forgot, wrong, fix, and go back evidence.",
+      "url": "https://ego4d-data.org/"
+    }
+  ]
+}
