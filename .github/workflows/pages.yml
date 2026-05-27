@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Build dataset manifest
-        run: python -m pipeline.run_pipeline --candidates data/candidates.csv --out site/data/dataset.json --report build/report.md
+        run: python -m pipeline.run_pipeline --candidates data/candidates.csv --verifications data/verifications.json --out site/data/dataset.json --report build/report.md --verified-only
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

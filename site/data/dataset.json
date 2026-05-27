@@ -1,8 +1,9 @@
 {
   "name": "Streaming Plan Recovery",
   "task": "Detect when the user's observed trajectory is diverging from their intended plan, and produce a timely intervention that helps them recover.",
-  "generated_at": "2026-05-26T23:47:15.103545+00:00",
+  "generated_at": "2026-05-27T00:58:36.289200+00:00",
   "min_score": 3,
+  "verified_only": true,
   "deviation_cues": {
     "wrong_action": [
       "wrong",
@@ -45,315 +46,402 @@
   },
   "records": [
     {
-      "id": "source_egoper",
-      "record_type": "source",
-      "title": "EgoPER",
-      "url": "https://www.khoury.northeastern.edu/home/eelhami/egoper.htm",
-      "domain": "cooking",
-      "source_family": "EgoPER",
-      "priority": 1,
-      "deviation_type": "procedural_errors",
-      "score": 9,
-      "status": "source_pointer",
-      "summary": "Egocentric cooking videos with explicit error taxonomy including slip, correction, modification, addition, and omission.",
-      "best_use": "Streaming recipe-following assistance.",
-      "annotation": null
-    },
-    {
-      "id": "source_captaincook4d",
-      "record_type": "source",
-      "title": "CaptainCook4D",
-      "url": "https://captaincook4d.github.io/captain-cook/",
-      "domain": "cooking",
-      "source_family": "CaptainCook4D",
-      "priority": 1,
-      "deviation_type": "recipe_following_deviations",
-      "score": 9,
-      "status": "source_pointer",
-      "summary": "Participants follow recipe instructions correctly or deliberately induce errors.",
-      "best_use": "Wrong step, wrong order, missing ingredient, and recovery examples.",
-      "annotation": null
-    },
-    {
-      "id": "source_assembly101",
-      "record_type": "source",
-      "title": "Assembly101",
-      "url": "https://assembly-101.github.io/",
-      "domain": "assembly",
-      "source_family": "Assembly101",
-      "priority": 1,
-      "deviation_type": "mistake_detection",
-      "score": 9,
-      "status": "source_pointer",
-      "summary": "Large multi-view assembly videos with natural mistakes and correction segments.",
-      "best_use": "Object-state and step-order deviation.",
-      "annotation": null
-    },
-    {
-      "id": "source_egooops",
-      "record_type": "source",
-      "title": "EgoOops",
-      "url": "https://arxiv.org/abs/2410.05343",
-      "domain": "procedural",
-      "source_family": "EgoOops",
-      "priority": 1,
-      "deviation_type": "plan_conditioned_mistakes",
-      "score": 9,
-      "status": "source_pointer",
-      "summary": "Small, clean setting with explicit text plan, video, mistake labels, and descriptions.",
-      "best_use": "Plan-conditioned deviation detection.",
-      "annotation": null
-    },
-    {
-      "id": "source_ata",
-      "record_type": "source",
-      "title": "ATA",
-      "url": "https://usa.honda-ri.com/ata",
-      "domain": "assembly",
-      "source_family": "ATA",
-      "priority": 1,
-      "deviation_type": "sequential_assembly_anomalies",
-      "score": 9,
-      "status": "source_pointer",
-      "summary": "Toy assembly recordings designed around procedural anomaly detection.",
-      "best_use": "Controlled anomaly and recovery modeling.",
-      "annotation": null
-    },
-    {
-      "id": "source_shopping_visual_search_data",
-      "record_type": "source",
-      "title": "Shopping visual-search data",
-      "url": "https://www.sciencedirect.com/science/article/pii/S1077314224002108",
-      "domain": "shopping",
-      "source_family": "Shopping visual-search data",
-      "priority": 2,
-      "deviation_type": "missed_target_or_wrong_object",
-      "score": 8,
-      "status": "source_pointer",
-      "summary": "Known target product and first-person search trajectory.",
-      "best_use": "Detect moving away from target shelf, missing product, or fixating wrong item.",
-      "annotation": null
-    },
-    {
-      "id": "source_lookout___aria_navigation_dataset",
-      "record_type": "source",
-      "title": "LookOut / Aria Navigation Dataset",
-      "url": "https://arxiv.org/abs/2508.14466",
-      "domain": "navigation",
-      "source_family": "LookOut / Aria Navigation Dataset",
-      "priority": 2,
-      "deviation_type": "route_failure",
-      "score": 8,
-      "status": "source_pointer",
-      "summary": "Navigation behavior includes rerouting, slowing down, looking around, and obstacle handling.",
-      "best_use": "Infer path deviation from trajectory, gaze, and route behavior.",
-      "annotation": null
-    },
-    {
-      "id": "source_egocampus",
-      "record_type": "source",
-      "title": "EgoCampus",
-      "url": "https://arxiv.org/abs/2512.07668",
-      "domain": "navigation",
-      "source_family": "EgoCampus",
-      "priority": 2,
-      "deviation_type": "route_failure",
-      "score": 8,
-      "status": "source_pointer",
-      "summary": "Pedestrian navigation with gaze, GPS, IMU, and RGB.",
-      "best_use": "Compare intended path to observed path or hesitation/backtracking.",
-      "annotation": null
-    },
-    {
-      "id": "source_ego4d___epic___hd_epic",
-      "record_type": "source",
-      "title": "Ego4D / EPIC / HD-EPIC",
-      "url": "https://ego4d-data.org/",
-      "domain": "daily_life",
-      "source_family": "Ego4D / EPIC / HD-EPIC",
-      "priority": 3,
-      "deviation_type": "filtered_transcript_deviations",
-      "score": 7,
-      "status": "source_pointer",
-      "summary": "Large daily egocentric activity corpora can be filtered by narration and transcript cues.",
-      "best_use": "Scale after filtering for forgot, wrong, fix, and go back evidence.",
-      "annotation": null
-    },
-    {
-      "id": "nav_001",
+      "id": "yt_r08kmBD8-O8",
       "record_type": "candidate",
-      "title": "Wrong turn POV walking campus",
-      "url": "https://example.com/nav_001",
-      "domain": "navigation",
-      "source_family": "LookOut / Aria Navigation Dataset",
-      "priority": 2,
-      "deviation_type": "wrong_action",
-      "score": 13,
-      "status": "candidate",
-      "summary": "Walking navigation clip with a missed hallway",
-      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
-      "cue_hits": [
-        {
-          "category": "wrong_action",
-          "phrase": "wrong",
-          "field": "title",
-          "weight": 3
-        },
-        {
-          "category": "route_failure",
-          "phrase": "wrong turn",
-          "field": "title",
-          "weight": 3
-        },
-        {
-          "category": "omission",
-          "phrase": "missed",
-          "field": "description",
-          "weight": 2
-        },
-        {
-          "category": "wrong_action",
-          "phrase": "wrong",
-          "field": "transcript",
-          "weight": 1
-        },
-        {
-          "category": "wrong_action",
-          "phrase": "wrong",
-          "field": "transcript",
-          "weight": 1
-        },
-        {
-          "category": "omission",
-          "phrase": "missed",
-          "field": "transcript",
-          "weight": 1
-        },
-        {
-          "category": "route_failure",
-          "phrase": "went the wrong way",
-          "field": "transcript",
-          "weight": 1
-        },
-        {
-          "category": "recovery",
-          "phrase": "turn around",
-          "field": "transcript",
-          "weight": 1
-        }
-      ],
-      "annotation": {
-        "goal": "Walk to the lab building",
-        "current_state": "Needs visual review",
-        "expected_next_state": "Needs visual review",
-        "deviation_type": "wrong_action",
-        "intervention_needed": true,
-        "intervention_timing": "around transcript cue",
-        "intervention_window": {
-          "start_seconds": 18,
-          "deviation_onset_seconds": 48,
-          "end_seconds": 78
-        },
-        "assistant_response": "This looks like it may not match the intended plan. Confirm before proceeding with: Walk to the lab building",
-        "license": "review_required"
-      }
-    },
-    {
-      "id": "cook_001",
-      "record_type": "candidate",
-      "title": "First person cooking mistake: forgot the eggs",
-      "url": "https://example.com/cook_001",
+      "title": "POV : Breakfast Shift Turned Into a Full Rush 🍔🔥",
+      "url": "https://www.youtube.com/watch?v=r08kmBD8-O8",
       "domain": "cooking",
-      "source_family": "YouTube/web mining",
+      "source_family": "YouTube/Aliyocooking",
       "priority": 2,
       "deviation_type": "omission",
-      "score": 8,
-      "status": "candidate",
-      "summary": "POV cooking clip where the user realizes a missing ingredient",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
       "best_use": "Human or VLM verification of a visible plan-deviation moment.",
-      "cue_hits": [
-        {
-          "category": "wrong_action",
-          "phrase": "mistake",
-          "field": "title",
-          "weight": 3
-        },
-        {
-          "category": "omission",
-          "phrase": "forgot",
-          "field": "title",
-          "weight": 3
-        },
-        {
-          "category": "omission",
-          "phrase": "forgot",
-          "field": "transcript",
-          "weight": 1
-        },
-        {
-          "category": "correction",
-          "phrase": "fix",
-          "field": "transcript",
-          "weight": 1
-        }
-      ],
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 0.9,
+        "goal": "Prepare a three-egg dish.",
+        "current_state": "One egg has been cracked into the pan, and the pan is being moved away.",
+        "expected_next_state": "Crack two more eggs into the pan.",
+        "deviation_type": "omission",
+        "visual_evidence": "The user cracks one egg into a pan, then picks up the pan and moves away briefly, only to return and crack two more eggs into the same pan.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "start_seconds": 17,
+        "deviation_onset_seconds": 19,
+        "end_seconds": 38,
+        "assistant_response": "You need two more eggs for this dish.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The user cracks one egg into a pan, then picks up the pan and moves away briefly, only to return and crack two more eggs into the same pan.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
       "annotation": {
-        "goal": "Make pancake batter",
-        "current_state": "Needs visual review",
-        "expected_next_state": "Needs visual review",
+        "goal": "Prepare a three-egg dish.",
+        "current_state": "One egg has been cracked into the pan, and the pan is being moved away.",
+        "expected_next_state": "Crack two more eggs into the pan.",
         "deviation_type": "omission",
         "intervention_needed": true,
-        "intervention_timing": "around transcript cue",
+        "intervention_timing": "immediate",
         "intervention_window": {
-          "start_seconds": 44,
-          "deviation_onset_seconds": 74,
-          "end_seconds": 104
+          "start_seconds": 17,
+          "deviation_onset_seconds": 19,
+          "end_seconds": 38
         },
-        "assistant_response": "It looks like a required step or item may have been skipped. Check the plan before continuing: Make pancake batter",
-        "license": "review_required"
+        "assistant_response": "You need two more eggs for this dish."
       }
     },
     {
-      "id": "shop_001",
+      "id": "yt_jyWXlitg8ZM",
       "record_type": "candidate",
-      "title": "Grocery trip went wrong",
-      "url": "https://example.com/shop_001",
-      "domain": "shopping",
-      "source_family": "Shopping visual-search data",
+      "title": "POV : Real Kitchen Pressure | Omelettes, Wraps & Rush Hour 🔥",
+      "url": "https://www.youtube.com/watch?v=jyWXlitg8ZM",
+      "domain": "cooking",
+      "source_family": "YouTube/Aliyocooking",
       "priority": 2,
       "deviation_type": "wrong_action",
-      "score": 4,
-      "status": "candidate",
-      "summary": "Shopper passes the drinks aisle and has to return for orange juice",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
       "best_use": "Human or VLM verification of a visible plan-deviation moment.",
-      "cue_hits": [
-        {
-          "category": "wrong_action",
-          "phrase": "wrong",
-          "field": "title",
-          "weight": 3
-        },
-        {
-          "category": "omission",
-          "phrase": "missed",
-          "field": "transcript",
-          "weight": 1
-        }
-      ],
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare a salad",
+        "current_state": "The salad bowl contains lettuce, tomatoes, cucumbers, and a hard-boiled egg.",
+        "expected_next_state": "Add dressing or other salad-specific toppings, or serve the salad.",
+        "deviation_type": "wrong_action",
+        "visual_evidence": "The user opens a drawer containing sandwich meats and cheeses and inspects them, which is not relevant to the current salad preparation.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "start_seconds": 43,
+        "deviation_onset_seconds": 80,
+        "end_seconds": 89,
+        "assistant_response": "It looks like you're preparing a salad. Are you looking for a specific topping? Those meats are typically for sandwiches.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The user opens a drawer containing sandwich meats and cheeses and inspects them, which is not relevant to the current salad preparation.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
       "annotation": {
-        "goal": "Buy orange juice canned tuna and KitKat",
-        "current_state": "Needs visual review",
-        "expected_next_state": "Needs visual review",
+        "goal": "Prepare a salad",
+        "current_state": "The salad bowl contains lettuce, tomatoes, cucumbers, and a hard-boiled egg.",
+        "expected_next_state": "Add dressing or other salad-specific toppings, or serve the salad.",
         "deviation_type": "wrong_action",
         "intervention_needed": true,
-        "intervention_timing": "around transcript cue",
+        "intervention_timing": "immediate",
         "intervention_window": {
-          "start_seconds": 102,
-          "deviation_onset_seconds": 132,
-          "end_seconds": 162
+          "start_seconds": 43,
+          "deviation_onset_seconds": 80,
+          "end_seconds": 89
         },
-        "assistant_response": "This looks like it may not match the intended plan. Confirm before proceeding with: Buy orange juice canned tuna and KitKat",
-        "license": "review_required"
+        "assistant_response": "It looks like you're preparing a salad. Are you looking for a specific topping? Those meats are typically for sandwiches."
+      }
+    },
+    {
+      "id": "yt_wNi0iwQSKVg",
+      "record_type": "candidate",
+      "title": "POV : The Breakfast Rush Never Stopped 😳🍳",
+      "url": "https://www.youtube.com/watch?v=wNi0iwQSKVg",
+      "domain": "cooking",
+      "source_family": "YouTube/Aliyocooking",
+      "priority": 2,
+      "deviation_type": "wrong_quantity",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare a breakfast order consisting of an English Muffin Sausage, Egg and Cheese Sandwich, French Fries, and Pancakes.",
+        "current_state": "The user has cracked one egg into a frying pan for the English Muffin sandwich and is cracking a second egg into the same pan.",
+        "expected_next_state": "The user should have stopped after cracking one egg for the English Muffin sandwich, as the order only requires one egg for that item.",
+        "deviation_type": "wrong_quantity",
+        "visual_evidence": "The order ticket (visible at 0:31) specifies '1x #5 English Muffin Sausage, Egg and Cheese Sandwich'. The user cracks a first egg into the pan at 1:08 and then a second egg into the same pan at 1:22.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "during",
+        "start_seconds": 38,
+        "deviation_onset_seconds": 82,
+        "end_seconds": 89,
+        "assistant_response": "The order only calls for one egg for the English Muffin sandwich.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The order ticket (visible at 0:31) specifies '1x #5 English Muffin Sausage, Egg and Cheese Sandwich'. The user cracks a first egg into the pan at 1:08 and then a second egg into the same pan at 1:22.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare a breakfast order consisting of an English Muffin Sausage, Egg and Cheese Sandwich, French Fries, and Pancakes.",
+        "current_state": "The user has cracked one egg into a frying pan for the English Muffin sandwich and is cracking a second egg into the same pan.",
+        "expected_next_state": "The user should have stopped after cracking one egg for the English Muffin sandwich, as the order only requires one egg for that item.",
+        "deviation_type": "wrong_quantity",
+        "intervention_needed": true,
+        "intervention_timing": "during",
+        "intervention_window": {
+          "start_seconds": 38,
+          "deviation_onset_seconds": 82,
+          "end_seconds": 89
+        },
+        "assistant_response": "The order only calls for one egg for the English Muffin sandwich."
+      }
+    },
+    {
+      "id": "yt_jWS8xEh60cI",
+      "record_type": "candidate",
+      "title": "👉 POV : Nonstop Grill Shift & Fresh Chicken Salads 🔥",
+      "url": "https://www.youtube.com/watch?v=jWS8xEh60cI",
+      "domain": "cooking",
+      "source_family": "YouTube/Aliyocooking",
+      "priority": 2,
+      "deviation_type": "omission",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare breakfast items including pancakes and French toast.",
+        "current_state": "The user has placed pancake batter on the griddle and is now preparing bread for French toast.",
+        "expected_next_state": "The user should attend to the cooking pancakes, such as flipping them or removing them from the griddle, before starting to prepare the French toast.",
+        "deviation_type": "omission",
+        "visual_evidence": "The user places pancake batter on the griddle at 0:03-0:06. They then walk away from the griddle at 0:06 and start preparing bread for French toast from 0:17. The pancakes are left unattended on the griddle while the user prepares and cooks French toast from 0:55 onwards.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 6,
+        "end_seconds": 129,
+        "assistant_response": "The pancakes are still on the griddle. You might want to check on them before they burn.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The user places pancake batter on the griddle at 0:03-0:06. They then walk away from the griddle at 0:06 and start preparing bread for French toast from 0:17. The pancakes are left unattended on the griddle while the user prepares and cooks French toast from 0:55 onwards.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare breakfast items including pancakes and French toast.",
+        "current_state": "The user has placed pancake batter on the griddle and is now preparing bread for French toast.",
+        "expected_next_state": "The user should attend to the cooking pancakes, such as flipping them or removing them from the griddle, before starting to prepare the French toast.",
+        "deviation_type": "omission",
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "intervention_window": {
+          "start_seconds": 0,
+          "deviation_onset_seconds": 6,
+          "end_seconds": 129
+        },
+        "assistant_response": "The pancakes are still on the griddle. You might want to check on them before they burn."
+      }
+    },
+    {
+      "id": "yt_u5wbgJHhbxA",
+      "record_type": "candidate",
+      "title": "POV : 👉 Busy Grill Shift with Kebabs & Omelettes 🔥",
+      "url": "https://www.youtube.com/watch?v=u5wbgJHhbxA",
+      "domain": "cooking",
+      "source_family": "YouTube/Aliyocooking",
+      "priority": 2,
+      "deviation_type": "premature_action",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare an omelet and hash browns.",
+        "current_state": "The user has one omelet and hash browns cooking on the griddle. They have just prepared the ingredients for a second omelet.",
+        "expected_next_state": "The user should continue cooking the first omelet and hash browns, ensuring they are properly cooked and flipped/moved as needed, before starting a new omelet.",
+        "deviation_type": "premature_action",
+        "visual_evidence": "The first omelet is visible on the left side of the griddle, still cooking. The hash browns are on the right, also cooking. The user is holding a bowl with the second omelet mixture, about to pour it onto the griddle, which has limited space.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "during_deviation",
+        "start_seconds": 108,
+        "deviation_onset_seconds": 117,
+        "end_seconds": 129,
+        "assistant_response": "The griddle is currently full with the first omelet and hash browns. Let's finish cooking those before starting another omelet.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The first omelet is visible on the left side of the griddle, still cooking. The hash browns are on the right, also cooking. The user is holding a bowl with the second omelet mixture, about to pour it onto the griddle, which has limited space.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare an omelet and hash browns.",
+        "current_state": "The user has one omelet and hash browns cooking on the griddle. They have just prepared the ingredients for a second omelet.",
+        "expected_next_state": "The user should continue cooking the first omelet and hash browns, ensuring they are properly cooked and flipped/moved as needed, before starting a new omelet.",
+        "deviation_type": "premature_action",
+        "intervention_needed": true,
+        "intervention_timing": "during_deviation",
+        "intervention_window": {
+          "start_seconds": 108,
+          "deviation_onset_seconds": 117,
+          "end_seconds": 129
+        },
+        "assistant_response": "The griddle is currently full with the first omelet and hash browns. Let's finish cooking those before starting another omelet."
+      }
+    },
+    {
+      "id": "yt_MjN4o--RzqE",
+      "record_type": "candidate",
+      "title": "POV : 👉 Steady Grill Shift with Wraps, Kebabs & Omelettes 🔥",
+      "url": "https://www.youtube.com/watch?v=MjN4o--RzqE",
+      "domain": "cooking",
+      "source_family": "YouTube/Aliyocooking",
+      "priority": 2,
+      "deviation_type": "wrong_action",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare a '1 meat omelet' with bacon, scrambled, and American cheese based on the order ticket.",
+        "current_state": "The user is adding chopped vegetables (green peppers, onions, tomatoes, mushrooms) to a plate after having already placed bacon on the griddle.",
+        "expected_next_state": "The user should prepare the eggs for the omelet and combine them with the bacon and American cheese, without adding any vegetables, as the order ticket specifies a 'meat omelet' and does not list any vegetables.",
+        "deviation_type": "wrong_action",
+        "visual_evidence": "The order ticket at 0:19-0:21 clearly states '1-3 MEAT OMELET' and 'BACON 1', with no mention of vegetables. The user proceeds to add green peppers (1:09), onions (1:12), tomatoes (1:14), and mushrooms (1:17) to a plate, and then adds these vegetables to the griddle at 1:23-1:29.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "early",
+        "start_seconds": 22,
+        "deviation_onset_seconds": 109,
+        "end_seconds": 129,
+        "assistant_response": "The order ticket for the meat omelet only specifies bacon and American cheese. It does not include any vegetables.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The order ticket at 0:19-0:21 clearly states '1-3 MEAT OMELET' and 'BACON 1', with no mention of vegetables. The user proceeds to add green peppers (1:09), onions (1:12), tomatoes (1:14), and mushrooms (1:17) to a plate, and then adds these vegetables to the griddle at 1:23-1:29.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare a '1 meat omelet' with bacon, scrambled, and American cheese based on the order ticket.",
+        "current_state": "The user is adding chopped vegetables (green peppers, onions, tomatoes, mushrooms) to a plate after having already placed bacon on the griddle.",
+        "expected_next_state": "The user should prepare the eggs for the omelet and combine them with the bacon and American cheese, without adding any vegetables, as the order ticket specifies a 'meat omelet' and does not list any vegetables.",
+        "deviation_type": "wrong_action",
+        "intervention_needed": true,
+        "intervention_timing": "early",
+        "intervention_window": {
+          "start_seconds": 22,
+          "deviation_onset_seconds": 109,
+          "end_seconds": 129
+        },
+        "assistant_response": "The order ticket for the meat omelet only specifies bacon and American cheese. It does not include any vegetables."
+      }
+    },
+    {
+      "id": "yt_PLzC7lPArJs",
+      "record_type": "candidate",
+      "title": "POV : 👉 Grill Didn’t Stop… My Friend Had to Jump In 😳🔥",
+      "url": "https://www.youtube.com/watch?v=PLzC7lPArJs",
+      "domain": "cooking",
+      "source_family": "YouTube/Aliyocooking",
+      "priority": 2,
+      "deviation_type": "repeated_step",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "Human or VLM verification of a visible plan-deviation moment.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 1.0,
+        "goal": "Prepare an omelet and hash browns",
+        "current_state": "The omelet mixture is on the griddle, and hash browns are already cooking on the griddle.",
+        "expected_next_state": "Continue cooking the omelet and the existing hash browns.",
+        "deviation_type": "repeated_step",
+        "visual_evidence": "The person picks up a raw potato and a knife, indicating they are about to prepare hash browns from scratch, despite already having hash browns cooking on the griddle.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 125,
+        "end_seconds": 129,
+        "assistant_response": "It looks like you already have hash browns cooking on the griddle. Do you need to prepare more?",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The person picks up a raw potato and a knife, indicating they are about to prepare hash browns from scratch, despite already having hash browns cooking on the griddle.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare an omelet and hash browns",
+        "current_state": "The omelet mixture is on the griddle, and hash browns are already cooking on the griddle.",
+        "expected_next_state": "Continue cooking the omelet and the existing hash browns.",
+        "deviation_type": "repeated_step",
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "intervention_window": {
+          "start_seconds": 0,
+          "deviation_onset_seconds": 125,
+          "end_seconds": 129
+        },
+        "assistant_response": "It looks like you already have hash browns cooking on the griddle. Do you need to prepare more?"
       }
     }
   ]

@@ -17,6 +17,10 @@ function textForSearch(record) {
     record.source_family,
     record.deviation_type,
     record.summary,
+    record.status,
+    record.rights?.license_status,
+    record.rights?.hosting_status,
+    record.curation?.visual_evidence,
     ...(record.cue_hits || []).map((hit) => hit.phrase)
   ].join(" ").toLowerCase();
 }
@@ -32,10 +36,18 @@ function escapeHtml(value) {
 
 function card(record) {
   const annotation = record.annotation || {};
+  const curation = record.curation || {};
+  const rights = record.rights || {};
   const window = annotation.intervention_window;
   const timing = window
     ? `${window.start_seconds}s-${window.end_seconds}s`
     : annotation.intervention_timing || "source";
+  const evidence = curation.visual_evidence
+    ? `<p><strong>Evidence:</strong> ${escapeHtml(curation.visual_evidence)}</p>`
+    : "";
+  const rightsLine = rights.hosting_status || rights.license_status
+    ? `<span class="pill">${escapeHtml(rights.hosting_status || "rights unknown")}</span>`
+    : "";
 
   return `
     <article class="record-card">
@@ -48,8 +60,11 @@ function card(record) {
       <div class="meta">
         <span class="pill">${escapeHtml(record.domain)}</span>
         <span class="pill">${escapeHtml(record.deviation_type)}</span>
+        <span class="pill">${escapeHtml(record.status)}</span>
         <span class="pill">${escapeHtml(timing)}</span>
+        ${rightsLine}
       </div>
+      ${evidence}
       ${annotation.assistant_response ? `<p>${escapeHtml(annotation.assistant_response)}</p>` : ""}
       ${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noreferrer">Open source</a>` : ""}
     </article>

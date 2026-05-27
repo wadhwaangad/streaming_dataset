@@ -1,0 +1,383 @@
+{
+  "verifier": "gemini",
+  "records": {
+    "cook_001": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:49:38Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "Make pancake batter",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 400: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Cannot fetch content from the provided URL.\",\n    \"status\": \"INVALID_ARGUMENT\"\n  }\n}\n"
+      }
+    },
+    "shop_001": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:49:39Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "Buy orange juice canned tuna and KitKat",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 400: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Cannot fetch content from the provided URL.\",\n    \"status\": \"INVALID_ARGUMENT\"\n  }\n}\n"
+      }
+    },
+    "nav_001": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:49:39Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "Walk to the lab building",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 400: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Cannot fetch content from the provided URL.\",\n    \"status\": \"INVALID_ARGUMENT\"\n  }\n}\n"
+      }
+    },
+    "yt_r08kmBD8-O8": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:50:08Z",
+      "result": {
+        "valid": true,
+        "confidence": 0.9,
+        "goal": "Prepare a three-egg dish.",
+        "current_state": "One egg has been cracked into the pan, and the pan is being moved away.",
+        "expected_next_state": "Crack two more eggs into the pan.",
+        "deviation_type": "omission",
+        "visual_evidence": "The user cracks one egg into a pan, then picks up the pan and moves away briefly, only to return and crack two more eggs into the same pan.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "start_seconds": 17,
+        "deviation_onset_seconds": 19,
+        "end_seconds": 38,
+        "assistant_response": "You need two more eggs for this dish.",
+        "rejection_reason": ""
+      }
+    },
+    "yt_jyWXlitg8ZM": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:50:40Z",
+      "result": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare a salad",
+        "current_state": "The salad bowl contains lettuce, tomatoes, cucumbers, and a hard-boiled egg.",
+        "expected_next_state": "Add dressing or other salad-specific toppings, or serve the salad.",
+        "deviation_type": "wrong_action",
+        "visual_evidence": "The user opens a drawer containing sandwich meats and cheeses and inspects them, which is not relevant to the current salad preparation.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "start_seconds": 43,
+        "deviation_onset_seconds": 80,
+        "end_seconds": 89,
+        "assistant_response": "It looks like you're preparing a salad. Are you looking for a specific topping? Those meats are typically for sandwiches.",
+        "rejection_reason": ""
+      }
+    },
+    "yt_wNi0iwQSKVg": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:51:10Z",
+      "result": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare a breakfast order consisting of an English Muffin Sausage, Egg and Cheese Sandwich, French Fries, and Pancakes.",
+        "current_state": "The user has cracked one egg into a frying pan for the English Muffin sandwich and is cracking a second egg into the same pan.",
+        "expected_next_state": "The user should have stopped after cracking one egg for the English Muffin sandwich, as the order only requires one egg for that item.",
+        "deviation_type": "wrong_quantity",
+        "visual_evidence": "The order ticket (visible at 0:31) specifies '1x #5 English Muffin Sausage, Egg and Cheese Sandwich'. The user cracks a first egg into the pan at 1:08 and then a second egg into the same pan at 1:22.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "during",
+        "start_seconds": 38,
+        "deviation_onset_seconds": 82,
+        "end_seconds": 89,
+        "assistant_response": "The order only calls for one egg for the English Muffin sandwich.",
+        "rejection_reason": ""
+      }
+    },
+    "yt_jWS8xEh60cI": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:51:37Z",
+      "result": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare breakfast items including pancakes and French toast.",
+        "current_state": "The user has placed pancake batter on the griddle and is now preparing bread for French toast.",
+        "expected_next_state": "The user should attend to the cooking pancakes, such as flipping them or removing them from the griddle, before starting to prepare the French toast.",
+        "deviation_type": "omission",
+        "visual_evidence": "The user places pancake batter on the griddle at 0:03-0:06. They then walk away from the griddle at 0:06 and start preparing bread for French toast from 0:17. The pancakes are left unattended on the griddle while the user prepares and cooks French toast from 0:55 onwards.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 6,
+        "end_seconds": 129,
+        "assistant_response": "The pancakes are still on the griddle. You might want to check on them before they burn.",
+        "rejection_reason": ""
+      }
+    },
+    "yt_u5wbgJHhbxA": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:06Z",
+      "result": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare an omelet and hash browns.",
+        "current_state": "The user has one omelet and hash browns cooking on the griddle. They have just prepared the ingredients for a second omelet.",
+        "expected_next_state": "The user should continue cooking the first omelet and hash browns, ensuring they are properly cooked and flipped/moved as needed, before starting a new omelet.",
+        "deviation_type": "premature_action",
+        "visual_evidence": "The first omelet is visible on the left side of the griddle, still cooking. The hash browns are on the right, also cooking. The user is holding a bowl with the second omelet mixture, about to pour it onto the griddle, which has limited space.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "during_deviation",
+        "start_seconds": 108,
+        "deviation_onset_seconds": 117,
+        "end_seconds": 129,
+        "assistant_response": "The griddle is currently full with the first omelet and hash browns. Let's finish cooking those before starting another omelet.",
+        "rejection_reason": ""
+      }
+    },
+    "yt_MjN4o--RzqE": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:32Z",
+      "result": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare a '1 meat omelet' with bacon, scrambled, and American cheese based on the order ticket.",
+        "current_state": "The user is adding chopped vegetables (green peppers, onions, tomatoes, mushrooms) to a plate after having already placed bacon on the griddle.",
+        "expected_next_state": "The user should prepare the eggs for the omelet and combine them with the bacon and American cheese, without adding any vegetables, as the order ticket specifies a 'meat omelet' and does not list any vegetables.",
+        "deviation_type": "wrong_action",
+        "visual_evidence": "The order ticket at 0:19-0:21 clearly states '1-3 MEAT OMELET' and 'BACON 1', with no mention of vegetables. The user proceeds to add green peppers (1:09), onions (1:12), tomatoes (1:14), and mushrooms (1:17) to a plate, and then adds these vegetables to the griddle at 1:23-1:29.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "early",
+        "start_seconds": 22,
+        "deviation_onset_seconds": 109,
+        "end_seconds": 129,
+        "assistant_response": "The order ticket for the meat omelet only specifies bacon and American cheese. It does not include any vegetables.",
+        "rejection_reason": ""
+      }
+    },
+    "yt_SNdrgJqkqME": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:32Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 27.092722761s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"model\": \"gemini-2.5-flash\",\n              \"location\": \"global\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"27s\"\n      }\n    ]\n  }\n}\n"
+      }
+    },
+    "yt_TMaizwckfEc": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:32Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 26.819630071s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"model\": \"gemini-2.5-flash\",\n              \"location\": \"global\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"26s\"\n      }\n    ]\n  }\n}\n"
+      }
+    },
+    "yt_Yx9wMK0o5S4": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:32Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 26.584908402s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"location\": \"global\",\n              \"model\": \"gemini-2.5-flash\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"26s\"\n      }\n    ]\n  }\n}\n"
+      }
+    },
+    "yt_PLzC7lPArJs": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:58Z",
+      "result": {
+        "valid": true,
+        "confidence": 1.0,
+        "goal": "Prepare an omelet and hash browns",
+        "current_state": "The omelet mixture is on the griddle, and hash browns are already cooking on the griddle.",
+        "expected_next_state": "Continue cooking the omelet and the existing hash browns.",
+        "deviation_type": "repeated_step",
+        "visual_evidence": "The person picks up a raw potato and a knife, indicating they are about to prepare hash browns from scratch, despite already having hash browns cooking on the griddle.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "immediate",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 125,
+        "end_seconds": 129,
+        "assistant_response": "It looks like you already have hash browns cooking on the griddle. Do you need to prepare more?",
+        "rejection_reason": ""
+      }
+    },
+    "yt_MkqwDThtQ5s": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:58Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 852.2083ms.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"location\": \"global\",\n              \"model\": \"gemini-2.5-flash\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"0s\"\n      }\n    ]\n  }\n}\n"
+      }
+    },
+    "yt_c88ZR_U8puA": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:59Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 342.49062ms.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"location\": \"global\",\n              \"model\": \"gemini-2.5-flash\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"0s\"\n      }\n    ]\n  }\n}\n"
+      }
+    },
+    "yt_FiTs2uw2COk": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:59Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.971646231s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"location\": \"global\",\n              \"model\": \"gemini-2.5-flash\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"59s\"\n      }\n    ]\n  }\n}\n"
+      }
+    },
+    "yt_xBUssDeDFp0": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:52:59Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.65214333s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"location\": \"global\",\n              \"model\": \"gemini-2.5-flash\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"59s\"\n      }\n    ]\n  }\n}\n"
+      }
+    },
+    "yt_JD9KBKyqkn0": {
+      "model": "gemini-2.5-flash",
+      "verified_at": "2026-05-27T00:53:00Z",
+      "result": {
+        "valid": false,
+        "confidence": 0,
+        "goal": "",
+        "current_state": "",
+        "expected_next_state": "",
+        "deviation_type": "not_a_deviation",
+        "visual_evidence": "",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": false,
+        "intervention_timing": "unverified",
+        "start_seconds": 0,
+        "deviation_onset_seconds": 0,
+        "end_seconds": 0,
+        "assistant_response": "",
+        "rejection_reason": "Gemini API error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.33444255s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"model\": \"gemini-2.5-flash\",\n              \"location\": \"global\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"59s\"\n      }\n    ]\n  }\n}\n"
+      }
+    }
+  }
+}
