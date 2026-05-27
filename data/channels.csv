@@ -1,2 +1,2 @@
-channel_id,channel_url,feed_url,source_family,domain,goal_hint,include_all,notes
-,https://www.youtube.com/@Aliyocooking,,YouTube/Aliyocooking,cooking,,true,
+channel_id,feed_url,source_family,domain,goal_hint,include_all,notes
+Aliyocooking,https://www.youtube.com/@Aliyocooking,cooking, 
