@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import os
+import socket
 import sys
 import time
 import urllib.error
@@ -17,6 +18,14 @@ DEFAULT_CANDIDATES = ROOT / "data" / "candidates.csv"
 DEFAULT_OUT = ROOT / "data" / "verifications.json"
 DEFAULT_MODEL = "gemini-2.5-flash"
 API_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+ALLOWED_DEVIATION_TYPES = [
+    "wrong_action",
+    "omission",
+    "correction",
+    "search_failure",
+    "route_failure",
+    "recovery"
+]
 
 
 SCHEMA: dict[str, Any] = {
@@ -27,7 +36,10 @@ SCHEMA: dict[str, Any] = {
         "goal": {"type": "string"},
         "current_state": {"type": "string"},
         "expected_next_state": {"type": "string"},
-        "deviation_type": {"type": "string"},
+        "deviation_type": {
+            "type": "string",
+            "enum": ALLOWED_DEVIATION_TYPES + ["not_a_deviation"]
+        },
         "visual_evidence": {"type": "string"},
         "could_assist_before_user_realizes": {"type": "boolean"},
         "intervention_needed": {"type": "boolean"},
@@ -97,10 +109,19 @@ Rules:
 - valid must be true only if the video evidence supports a real plan deviation.
 - Do not accept generic "fail" videos unless the intent, deviation, and possible intervention are clear.
 - If the metadata is insufficient or the video cannot be accessed, set valid=false and explain rejection_reason.
-- Use precise, dataset-friendly labels. Good deviation_type values include:
-  missed_target_location, wrong_object, skipped_step, repeated_step, route_failure,
-  search_failure, omission, wrong_action, correction, recovery, not_a_deviation.
+- If valid=true, deviation_type must be exactly one of:
+  wrong_action, omission, correction, search_failure, route_failure, recovery.
+- If valid=false, deviation_type must be exactly not_a_deviation.
+- Do not invent any other deviation_type labels.
+- Label definitions:
+  wrong_action: the user does the wrong action, uses the wrong object, or chooses the wrong option.
+  omission: the user forgot, missed, skipped, or left out a required target, item, location, or step.
+  correction: the user needs to fix, redo, correct, start over, or try again.
+  search_failure: the user cannot find something despite searching or being near it.
+  route_failure: the user takes a wrong turn, misses a turn, gets lost, or goes the wrong way.
+  recovery: the user must go back, turn around, reroute, or backtrack.
 - Pick the tightest useful segment. Use integers in seconds.
+- Return start_seconds, deviation_onset_seconds, and end_seconds as absolute seconds in the full source video, not seconds relative to the requested segment.
 - assistant_response should be what a streaming assistant would say at the intervention moment.
 """.strip()
 
@@ -117,6 +138,43 @@ def clip_offsets(row: dict[str, str], default_start: int, default_seconds: int) 
     except ValueError:
         end = start + default_seconds
     return start, end
+
+
+def is_youtube_url(row: dict[str, str]) -> bool:
+    url = row.get("url", "").lower()
+    return "youtube.com/" in url or "youtu.be/" in url
+
+
+def clip_seconds(row: dict[str, str], default_start: int, default_seconds: int) -> int:
+    start, end = clip_offsets(row, default_start, default_seconds)
+    return max(0, end - start)
+
+
+def normalize_result_timestamps(
+    result: dict[str, Any],
+    row: dict[str, str],
+    default_start: int,
+    default_seconds: int
+) -> dict[str, Any]:
+    start, end = clip_offsets(row, default_start, default_seconds)
+    if start <= 0 or not result.get("valid"):
+        return result
+
+    clip_length = max(0, end - start)
+    keys = ("start_seconds", "deviation_onset_seconds", "end_seconds")
+    values: list[int] = []
+    for key in keys:
+        try:
+            values.append(int(float(result.get(key))))
+        except (TypeError, ValueError):
+            return result
+
+    # Gemini sometimes reports timestamps relative to the requested segment.
+    # Candidate rows store absolute offsets, so convert clearly relative answers.
+    if all(0 <= value <= clip_length for value in values):
+        for key, value in zip(keys, values):
+            result[key] = min(end, start + value)
+    return result
 
 
 def request_body(row: dict[str, str], default_start: int, default_seconds: int) -> dict[str, Any]:
@@ -189,6 +247,7 @@ def verify_candidates(args: argparse.Namespace) -> dict[str, Any]:
     if args.limit:
         selected = selected[: args.limit]
 
+    youtube_seconds_used = 0
     for row in selected:
         record_id = row.get("id", "").strip()
         if not record_id:
@@ -197,6 +256,16 @@ def verify_candidates(args: argparse.Namespace) -> dict[str, Any]:
         if record_id in records and not args.force:
             print(f"Skipping {record_id}; already verified")
             continue
+
+        row_clip_seconds = clip_seconds(row, args.default_start, args.default_clip_seconds)
+        if is_youtube_url(row):
+            if youtube_seconds_used + row_clip_seconds > args.max_youtube_seconds_per_run:
+                print(
+                    "Stopping before daily/run YouTube budget: "
+                    f"{youtube_seconds_used}s used, next row needs {row_clip_seconds}s"
+                )
+                break
+            youtube_seconds_used += row_clip_seconds
 
         print(f"Verifying {record_id}: {row.get('title', '')}")
         if args.dry_run:
@@ -227,6 +296,12 @@ def verify_candidates(args: argparse.Namespace) -> dict[str, Any]:
                     args.default_start,
                     args.default_clip_seconds
                 )
+                result = normalize_result_timestamps(
+                    result,
+                    row,
+                    args.default_start,
+                    args.default_clip_seconds
+                )
             except urllib.error.HTTPError as exc:
                 detail = exc.read().decode("utf-8", errors="replace")
                 result = {
@@ -247,6 +322,25 @@ def verify_candidates(args: argparse.Namespace) -> dict[str, Any]:
                     "rejection_reason": f"Gemini API error {exc.code}: {detail}"
                 }
                 print(f"Rejected {record_id}; Gemini could not process the URL")
+            except (TimeoutError, socket.timeout, urllib.error.URLError) as exc:
+                result = {
+                    "valid": False,
+                    "confidence": 0,
+                    "goal": row.get("goal", ""),
+                    "current_state": "",
+                    "expected_next_state": "",
+                    "deviation_type": "not_a_deviation",
+                    "visual_evidence": "",
+                    "could_assist_before_user_realizes": False,
+                    "intervention_needed": False,
+                    "intervention_timing": "unverified",
+                    "start_seconds": 0,
+                    "deviation_onset_seconds": 0,
+                    "end_seconds": 0,
+                    "assistant_response": "",
+                    "rejection_reason": f"Gemini request failed or timed out: {exc}"
+                }
+                print(f"Rejected {record_id}; Gemini request failed or timed out")
 
         records[record_id] = {
             "model": args.model,
@@ -258,6 +352,9 @@ def verify_candidates(args: argparse.Namespace) -> dict[str, Any]:
         with args.out.open("w", encoding="utf-8") as handle:
             json.dump(output, handle, indent=2, ensure_ascii=False)
             handle.write("\n")
+
+        if args.delay_seconds > 0:
+            time.sleep(args.delay_seconds)
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     with args.out.open("w", encoding="utf-8") as handle:
@@ -274,7 +371,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--timeout", type=int, default=120)
     parser.add_argument("--default-start", type=int, default=0)
-    parser.add_argument("--default-clip-seconds", type=int, default=90)
+    parser.add_argument("--default-clip-seconds", type=int, default=300)
+    parser.add_argument("--delay-seconds", type=float, default=20)
+    parser.add_argument("--max-youtube-seconds-per-run", type=int, default=27000)
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()

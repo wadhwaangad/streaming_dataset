@@ -144,6 +144,13 @@ def verified_window(result: dict[str, Any] | None, fallback: dict[str, int] | No
     }
 
 
+def timestamped_url(url: str, seconds: int | None) -> str:
+    if not url or seconds is None:
+        return url
+    joiner = "&" if "?" in url else "?"
+    return f"{url}{joiner}t={max(0, int(seconds))}"
+
+
 def candidate_records(
     candidates: list[dict[str, str]],
     source_map: dict[str, Any],
@@ -179,13 +186,18 @@ def candidate_records(
             if verification and verification.get("assistant_response")
             else assistant_draft(deviation_type, goal)
         )
+        start_seconds = window.get("start_seconds") if window else None
+        onset_seconds = window.get("deviation_onset_seconds") if window else None
+        source_url = row_value(row, "url")
 
         records.append(
             {
                 "id": row_value(row, "id") or "candidate_" + str(len(records) + 1),
                 "record_type": "candidate",
                 "title": row_value(row, "title"),
-                "url": row_value(row, "url"),
+                "url": source_url,
+                "clip_url": timestamped_url(source_url, start_seconds),
+                "intervention_url": timestamped_url(source_url, onset_seconds),
                 "domain": row_value(row, "domain", "unknown"),
                 "source_family": row_value(row, "source_family", "unknown"),
                 "priority": 2,

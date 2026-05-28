@@ -20,6 +20,17 @@ python -m pipeline.collect_candidates --channels data/channels.csv --candidates 
 
 The collector reads public channel RSS feeds and appends new uploads that match deviation cue terms. Set `include_all` to `true` for broad channels where you want Gemini to inspect everything.
 
+`data/channels.csv` columns:
+
+- `channel_id`: YouTube channel ID, usually starting with `UC`.
+- `channel_url`: Human-friendly channel URL such as `https://www.youtube.com/@Aliyocooking`.
+- `feed_url`: Direct RSS feed URL, if you already have one.
+- `source_family`: How this source should appear in the dataset, such as `YouTube/Aliyocooking`.
+- `domain`: Broad task domain, such as `cooking`, `shopping`, `navigation`, or `assembly`.
+- `goal_hint`: Optional default goal hint passed to Gemini.
+- `include_all`: `true` queues every recent upload; `false` queues only keyword-matching uploads.
+- `notes`: Free-form notes for you.
+
 ## 2. Queue Raw Candidates
 
 Each row in `data/candidates.csv` should describe one candidate video or segment. These fields are hints for the verifier, not final labels.

@@ -49,6 +49,9 @@ function card(record) {
     ? `<span class="pill">${escapeHtml(rights.hosting_status || "rights unknown")}</span>`
     : "";
 
+  const sourceHref = record.intervention_url || record.clip_url || record.url;
+  const sourceLabel = record.intervention_url ? "Open at deviation" : "Open source";
+
   return `
     <article class="record-card">
       <div class="record-topline">
@@ -66,7 +69,7 @@ function card(record) {
       </div>
       ${evidence}
       ${annotation.assistant_response ? `<p>${escapeHtml(annotation.assistant_response)}</p>` : ""}
-      ${record.url ? `<a href="${escapeHtml(record.url)}" target="_blank" rel="noreferrer">Open source</a>` : ""}
+      ${sourceHref ? `<a href="${escapeHtml(sourceHref)}" target="_blank" rel="noreferrer">${escapeHtml(sourceLabel)}</a>` : ""}
     </article>
   `;
 }
