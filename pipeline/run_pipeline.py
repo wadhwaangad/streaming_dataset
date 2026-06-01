@@ -124,6 +124,21 @@ def verification_for(row: dict[str, str], verifications: dict[str, Any]) -> dict
     return wrapper.get("result")
 
 
+def verification_wrappers_for(row: dict[str, str], verifications: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
+    record_id = row_value(row, "id")
+    wrappers = []
+    for key, wrapper in verifications.get("records", {}).items():
+        if wrapper.get("source_candidate_id") == record_id:
+            wrappers.append((key, wrapper))
+    if wrappers:
+        return sorted(wrappers, key=lambda item: int(item[1].get("clip_index", 0)))
+
+    legacy = verifications.get("records", {}).get(record_id)
+    if legacy:
+        return [(record_id, legacy)]
+    return []
+
+
 def verified_int(value: Any, fallback: int) -> int:
     try:
         return max(0, int(float(value)))
@@ -162,95 +177,115 @@ def candidate_records(
 
     for row in candidates:
         score, hits = score_candidate(row, cues)
-        verification = verification_for(row, verifications)
-        fallback_window = curated_window(row)
-        window = verified_window(verification, fallback_window)
-        verifier_valid = bool(verification.get("valid")) if verification else False
-        verifier_available = verification is not None
-        deviation_type = (
-            verification.get("deviation_type")
-            if verification and verification.get("deviation_type")
-            else row_deviation_type(row, hits)
-        )
-        goal = (
-            verification.get("goal")
-            if verification and verification.get("goal")
-            else row_value(row, "goal", "Unknown goal")
-        )
-        if verifier_available:
-            status = "curated" if verifier_valid else "rejected"
-        else:
-            status = "awaiting_vlm"
-        assistant_response = (
-            verification.get("assistant_response")
-            if verification and verification.get("assistant_response")
-            else assistant_draft(deviation_type, goal)
-        )
-        start_seconds = window.get("start_seconds") if window else None
-        onset_seconds = window.get("deviation_onset_seconds") if window else None
-        source_url = row_value(row, "url")
+        wrappers = verification_wrappers_for(row, verifications)
+        if not wrappers:
+            wrappers = [("", {})]
 
-        records.append(
-            {
-                "id": row_value(row, "id") or "candidate_" + str(len(records) + 1),
-                "record_type": "candidate",
-                "title": row_value(row, "title"),
-                "url": source_url,
-                "clip_url": timestamped_url(source_url, start_seconds),
-                "intervention_url": timestamped_url(source_url, onset_seconds),
-                "domain": row_value(row, "domain", "unknown"),
-                "source_family": row_value(row, "source_family", "unknown"),
-                "priority": 2,
-                "deviation_type": deviation_type,
-                "score": score,
-                "status": status,
-                "summary": row_value(row, "description"),
-                "best_use": "Human or VLM verification of a visible plan-deviation moment.",
-                "cue_hits": cue_summary(hits),
-                "verifier": verification,
-                "curation": {
-                    "status": status,
-                    "reviewer": "gemini" if verifier_available else "",
-                    "visual_evidence": (
-                        verification.get("visual_evidence")
-                        if verification and verification.get("visual_evidence")
-                        else row_value(row, "visual_evidence")
-                    ),
-                    "notes": (
-                        verification.get("rejection_reason")
-                        if verification and verification.get("rejection_reason")
-                        else row_value(row, "notes")
-                    )
-                },
-                "rights": {
-                    "license": row_value(row, "license", "review_required"),
-                    "license_status": row_value(row, "license_status", "unknown"),
-                    "hosting_status": row_value(row, "hosting_status", "external_link_only")
-                },
-                "annotation": {
-                    "goal": goal,
-                    "current_state": (
-                        verification.get("current_state")
-                        if verification and verification.get("current_state")
-                        else row_value(row, "current_state", "Needs VLM verification")
-                    ),
-                    "expected_next_state": (
-                        verification.get("expected_next_state")
-                        if verification and verification.get("expected_next_state")
-                        else row_value(row, "expected_next_state", "Needs VLM verification")
-                    ),
-                    "deviation_type": deviation_type,
-                    "intervention_needed": bool(verification.get("intervention_needed")) if verification else False,
-                    "intervention_timing": (
-                        verification.get("intervention_timing")
-                        if verification and verification.get("intervention_timing")
-                        else ("around transcript cue" if window else "needs localization")
-                    ),
-                    "intervention_window": window,
-                    "assistant_response": assistant_response
+        for verification_key, wrapper in wrappers:
+            verification = wrapper.get("result")
+            clip_start = wrapper.get("clip_start_seconds")
+            clip_end = wrapper.get("clip_end_seconds")
+            fallback_window = (
+                {
+                    "start_seconds": verified_int(clip_start, 0),
+                    "deviation_onset_seconds": verified_int(clip_start, 0),
+                    "end_seconds": verified_int(clip_end, verified_int(clip_start, 0))
                 }
-            }
-        )
+                if clip_start is not None and clip_end is not None
+                else curated_window(row)
+            )
+            window = verified_window(verification, fallback_window)
+            verifier_valid = bool(verification.get("valid")) if verification else False
+            verifier_available = verification is not None
+            deviation_type = (
+                verification.get("deviation_type")
+                if verification and verification.get("deviation_type")
+                else row_deviation_type(row, hits)
+            )
+            goal = (
+                verification.get("goal")
+                if verification and verification.get("goal")
+                else row_value(row, "goal", "Unknown goal")
+            )
+            if verifier_available:
+                status = "curated" if verifier_valid else "rejected"
+            else:
+                status = "awaiting_vlm"
+            assistant_response = (
+                verification.get("assistant_response")
+                if verification and verification.get("assistant_response")
+                else assistant_draft(deviation_type, goal)
+            )
+            start_seconds = window.get("start_seconds") if window else None
+            onset_seconds = window.get("deviation_onset_seconds") if window else None
+            pre_deviation_seconds = max(0, int(onset_seconds) - 30) if onset_seconds is not None else start_seconds
+            source_url = row_value(row, "url")
+            record_id = verification_key or row_value(row, "id") or "candidate_" + str(len(records) + 1)
+
+            records.append(
+                {
+                    "id": record_id,
+                    "source_candidate_id": row_value(row, "id"),
+                    "clip_index": wrapper.get("clip_index"),
+                    "record_type": "candidate",
+                    "title": row_value(row, "title"),
+                    "url": source_url,
+                    "clip_url": timestamped_url(source_url, start_seconds),
+                    "intervention_url": timestamped_url(source_url, pre_deviation_seconds),
+                    "deviation_onset_url": timestamped_url(source_url, onset_seconds),
+                    "domain": row_value(row, "domain", "unknown"),
+                    "source_family": row_value(row, "source_family", "unknown"),
+                    "priority": 2,
+                    "deviation_type": deviation_type,
+                    "score": score,
+                    "status": status,
+                    "summary": row_value(row, "description"),
+                    "best_use": "VLM-verified visible plan-deviation clip.",
+                    "cue_hits": cue_summary(hits),
+                    "verifier": verification,
+                    "curation": {
+                        "status": status,
+                        "reviewer": "gemini" if verifier_available else "",
+                        "visual_evidence": (
+                            verification.get("visual_evidence")
+                            if verification and verification.get("visual_evidence")
+                            else row_value(row, "visual_evidence")
+                        ),
+                        "notes": (
+                            verification.get("rejection_reason")
+                            if verification and verification.get("rejection_reason")
+                            else row_value(row, "notes")
+                        )
+                    },
+                    "rights": {
+                        "license": row_value(row, "license", "review_required"),
+                        "license_status": row_value(row, "license_status", "unknown"),
+                        "hosting_status": row_value(row, "hosting_status", "external_link_only")
+                    },
+                    "annotation": {
+                        "goal": goal,
+                        "current_state": (
+                            verification.get("current_state")
+                            if verification and verification.get("current_state")
+                            else row_value(row, "current_state", "Needs VLM verification")
+                        ),
+                        "expected_next_state": (
+                            verification.get("expected_next_state")
+                            if verification and verification.get("expected_next_state")
+                            else row_value(row, "expected_next_state", "Needs VLM verification")
+                        ),
+                        "deviation_type": deviation_type,
+                        "intervention_needed": bool(verification.get("intervention_needed")) if verification else False,
+                        "intervention_timing": (
+                            verification.get("intervention_timing")
+                            if verification and verification.get("intervention_timing")
+                            else ("around transcript cue" if window else "needs localization")
+                        ),
+                        "intervention_window": window,
+                        "assistant_response": assistant_response
+                    }
+                }
+            )
 
     return sorted(records, key=lambda item: item["score"], reverse=True)
 
