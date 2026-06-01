@@ -50,13 +50,12 @@ function card(record) {
     : "";
 
   const sourceHref = record.intervention_url || record.clip_url || record.url;
-  const sourceLabel = record.intervention_url ? "Open at deviation" : "Open source";
+  const sourceLabel = record.intervention_url ? "Open 30s before deviation" : "Open source";
 
   return `
     <article class="record-card">
       <div class="record-topline">
         <span class="pill">${escapeHtml(record.record_type)}</span>
-        <span class="score">score ${escapeHtml(record.score)}</span>
       </div>
       <h2>${escapeHtml(record.title)}</h2>
       <p>${escapeHtml(record.summary || record.best_use)}</p>
