@@ -1,0 +1,9 @@
+{
+  "name": "CaptainCook4D Local Qwen Verification",
+  "task": "Detect procedural cooking deviations from CaptainCook4D clips using a local Qwen2.5-VL 3B verifier.",
+  "dataset": "SabrianLinnn/captain_cook_4d",
+  "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+  "generated_at": "2026-06-16T06:06:44.652487+00:00",
+  "verified_only": false,
+  "records": []
+}

@@ -107,6 +107,32 @@ For YouTube rows, the generated dataset includes:
 
 Gemini timestamps are treated as absolute seconds in the full YouTube video, not relative seconds inside the clipped request. The website opens verified videos at `intervention_url` when available.
 
+## CaptainCook4D Local Qwen Verification
+
+The repo also includes a separate CaptainCook4D path that reads `SabrianLinnn/captain_cook_4d` from Hugging Face and verifies clips with a local 3B video-language model. The default model is `Qwen/Qwen2.5-VL-3B-Instruct`; plain `Qwen2.5-3B` is text-only and cannot inspect video frames.
+
+Install the local dependencies in your Python environment:
+
+```powershell
+pip install datasets transformers accelerate torch qwen-vl-utils
+```
+
+Run a small dry run first:
+
+```powershell
+python -m pipeline.qwen_captaincook_verify --limit 5 --streaming --dry-run
+python -m pipeline.build_captaincook_dataset
+```
+
+Run the actual local verifier:
+
+```powershell
+python -m pipeline.qwen_captaincook_verify --limit 5 --streaming
+python -m pipeline.build_captaincook_dataset --verified-only
+```
+
+Then open `site/captaincook.html` through the local web server. The page reads `site/data/captaincook_dataset.json` and keeps CaptainCook4D records separate from the general dataset browser.
+
 ## Dataset Framing
 
 The benchmark task is:

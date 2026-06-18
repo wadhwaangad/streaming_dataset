@@ -61,6 +61,23 @@ h1 {
   text-decoration: none;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links .download {
+  color: #ffffff;
+}
+
 main {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto 56px;

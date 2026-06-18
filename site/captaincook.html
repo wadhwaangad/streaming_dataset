@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CaptainCook4D Qwen Verification</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Local verifier</p>
+        <h1>CaptainCook4D</h1>
+      </div>
+      <nav class="nav-links" aria-label="Dataset pages">
+        <a href="index.html">Main dataset</a>
+        <a class="download" href="data/captaincook_dataset.json" download>Download JSON</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="summary-band">
+        <div class="summary">
+          <div>
+            <span id="recordCount">0</span>
+            <p>records</p>
+          </div>
+          <div>
+            <span id="curatedCount">0</span>
+            <p>curated</p>
+          </div>
+          <div>
+            <span id="rejectedCount">0</span>
+            <p>rejected</p>
+          </div>
+        </div>
+        <p id="taskText" class="task"></p>
+      </section>
+
+      <section class="controls" aria-label="CaptainCook controls">
+        <label>
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="recipe, evidence, response">
+        </label>
+        <label>
+          <span>Status</span>
+          <select id="statusFilter">
+            <option value="all">All statuses</option>
+            <option value="curated">Curated</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </label>
+        <label>
+          <span>Deviation</span>
+          <select id="deviationFilter">
+            <option value="all">All types</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="records" id="records" aria-live="polite"></section>
+    </main>
+
+    <script src="captaincook.js"></script>
+  </body>
+</html>

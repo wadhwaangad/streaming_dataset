@@ -1,7 +1,7 @@
 {
   "name": "Streaming Plan Recovery",
   "task": "Detect when the user's observed trajectory is diverging from their intended plan, and produce a timely intervention that helps them recover.",
-  "generated_at": "2026-06-01T01:16:33.400940+00:00",
+  "generated_at": "2026-06-18T20:02:35.433432+00:00",
   "min_score": 3,
   "verified_only": true,
   "deviation_cues": {
@@ -601,6 +601,316 @@
           "end_seconds": 68
         },
         "assistant_response": "The deep fryer is already full."
+      }
+    },
+    {
+      "id": "yt_t4g2nV4ftbI__clip_0000_0_300",
+      "source_candidate_id": "yt_t4g2nV4ftbI",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "Crazy day At the NEW Restaurant | Rush time 🤯🔥😥",
+      "url": "https://www.youtube.com/watch?v=t4g2nV4ftbI",
+      "clip_url": "https://www.youtube.com/watch?v=t4g2nV4ftbI&t=13",
+      "intervention_url": "https://www.youtube.com/watch?v=t4g2nV4ftbI&t=124",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=t4g2nV4ftbI&t=154",
+      "domain": "cooking",
+      "source_family": "YouTube/CocineroMX",
+      "priority": 2,
+      "deviation_type": "omission",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare seasoned omelets.",
+        "current_state": "Two omelets are cooking on the griddle. The user is at the ingredient station, preparing ingredients for a new batch of eggs.",
+        "expected_next_state": "All omelets should be seasoned. The user should be confident that the cooking omelets are seasoned.",
+        "deviation_type": "omission",
+        "visual_evidence": "At 2:34, the user states in Spanish, 'No me acuerdo si sazoné los huevos, pero ahorita lo hago de nuevo.' (I don't remember if I seasoned the eggs, but I'll do it again now.) This indicates uncertainty about a past step (seasoning the eggs currently cooking) and a plan to ensure it for the next batch, implying the current batch might be unseasoned.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "When the user expresses uncertainty about seasoning the eggs.",
+        "start_seconds": 13,
+        "deviation_onset_seconds": 154,
+        "end_seconds": 236,
+        "assistant_response": "Did you season the eggs before putting them on the griddle?",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "At 2:34, the user states in Spanish, 'No me acuerdo si sazoné los huevos, pero ahorita lo hago de nuevo.' (I don't remember if I seasoned the eggs, but I'll do it again now.) This indicates uncertainty about a past step (seasoning the eggs currently cooking) and a plan to ensure it for the next batch, implying the current batch might be unseasoned.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare seasoned omelets.",
+        "current_state": "Two omelets are cooking on the griddle. The user is at the ingredient station, preparing ingredients for a new batch of eggs.",
+        "expected_next_state": "All omelets should be seasoned. The user should be confident that the cooking omelets are seasoned.",
+        "deviation_type": "omission",
+        "intervention_needed": true,
+        "intervention_timing": "When the user expresses uncertainty about seasoning the eggs.",
+        "intervention_window": {
+          "start_seconds": 13,
+          "deviation_onset_seconds": 154,
+          "end_seconds": 236
+        },
+        "assistant_response": "Did you season the eggs before putting them on the griddle?"
+      }
+    },
+    {
+      "id": "yt_4_yyN1vN4cg__clip_0000_0_300",
+      "source_candidate_id": "yt_4_yyN1vN4cg",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "Serving Dinner for 23 People at a Distillery — Behind the Scenes!",
+      "url": "https://www.youtube.com/watch?v=4_yyN1vN4cg",
+      "clip_url": "https://www.youtube.com/watch?v=4_yyN1vN4cg&t=105",
+      "intervention_url": "https://www.youtube.com/watch?v=4_yyN1vN4cg&t=83",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=4_yyN1vN4cg&t=113",
+      "domain": "cooking",
+      "source_family": "YouTube/mr.brownofficial-u1k",
+      "priority": 2,
+      "deviation_type": "omission",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Arrive at work on time for the event.",
+        "current_state": "The user is in his car, 13 minutes late for work.",
+        "expected_next_state": "The user arrives at work by 1:00 PM.",
+        "deviation_type": "omission",
+        "visual_evidence": "The user states in Hindi, \"I got late for work\" and \"They called me at 1 o'clock, it's 1:13\" while showing his watch displaying 1:13 PM.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "Before the deviation",
+        "start_seconds": 105,
+        "deviation_onset_seconds": 113,
+        "end_seconds": 135,
+        "assistant_response": "It's 1:13 PM. You were scheduled to be at work by 1:00 PM. Would you like me to find the fastest route to work?",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The user states in Hindi, \"I got late for work\" and \"They called me at 1 o'clock, it's 1:13\" while showing his watch displaying 1:13 PM.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Arrive at work on time for the event.",
+        "current_state": "The user is in his car, 13 minutes late for work.",
+        "expected_next_state": "The user arrives at work by 1:00 PM.",
+        "deviation_type": "omission",
+        "intervention_needed": true,
+        "intervention_timing": "Before the deviation",
+        "intervention_window": {
+          "start_seconds": 105,
+          "deviation_onset_seconds": 113,
+          "end_seconds": 135
+        },
+        "assistant_response": "It's 1:13 PM. You were scheduled to be at work by 1:00 PM. Would you like me to find the fastest route to work?"
+      }
+    },
+    {
+      "id": "yt_8lpW-DL2hg4__clip_0000_0_300",
+      "source_candidate_id": "yt_8lpW-DL2hg4",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "“Restaurant Taste at Home!”",
+      "url": "https://www.youtube.com/watch?v=8lpW-DL2hg4",
+      "clip_url": "https://www.youtube.com/watch?v=8lpW-DL2hg4&t=85",
+      "intervention_url": "https://www.youtube.com/watch?v=8lpW-DL2hg4&t=55",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=8lpW-DL2hg4&t=85",
+      "domain": "cooking",
+      "source_family": "YouTube/mr.brownofficial-u1k",
+      "priority": 2,
+      "deviation_type": "correction",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "To make Calabrian Chili Vodka Rigatoni with Rosé sauce.",
+        "current_state": "Garlic is browning too quickly and is on the verge of burning in the pan.",
+        "expected_next_state": "Garlic should be sautéed until fragrant and lightly golden, not burnt.",
+        "deviation_type": "correction",
+        "visual_evidence": "Garlic visibly browning rapidly in the pan; speaker states 'my garlic is all about to be burnt' and 'It's about to be burnt'.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "Proactive, as soon as the browning becomes too rapid.",
+        "start_seconds": 85,
+        "deviation_onset_seconds": 85,
+        "end_seconds": 107,
+        "assistant_response": "Your garlic is browning quickly. Consider reducing the heat or adding the tomato sauce now to prevent it from burning.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "Garlic visibly browning rapidly in the pan; speaker states 'my garlic is all about to be burnt' and 'It's about to be burnt'.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "To make Calabrian Chili Vodka Rigatoni with Rosé sauce.",
+        "current_state": "Garlic is browning too quickly and is on the verge of burning in the pan.",
+        "expected_next_state": "Garlic should be sautéed until fragrant and lightly golden, not burnt.",
+        "deviation_type": "correction",
+        "intervention_needed": true,
+        "intervention_timing": "Proactive, as soon as the browning becomes too rapid.",
+        "intervention_window": {
+          "start_seconds": 85,
+          "deviation_onset_seconds": 85,
+          "end_seconds": 107
+        },
+        "assistant_response": "Your garlic is browning quickly. Consider reducing the heat or adding the tomato sauce now to prevent it from burning."
+      }
+    },
+    {
+      "id": "yt_HeWUuJb6y9s__clip_0000_0_244",
+      "source_candidate_id": "yt_HeWUuJb6y9s",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "Ever Watched Chef Starting A Food Truck? POV Vlog-1",
+      "url": "https://www.youtube.com/watch?v=HeWUuJb6y9s",
+      "clip_url": "https://www.youtube.com/watch?v=HeWUuJb6y9s&t=45",
+      "intervention_url": "https://www.youtube.com/watch?v=HeWUuJb6y9s&t=170",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=HeWUuJb6y9s&t=200",
+      "domain": "cooking",
+      "source_family": "YouTube/mr.brownofficial-u1k",
+      "priority": 2,
+      "deviation_type": "correction",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "Prepare the food truck for operation, which includes cleaning the deep fryer.",
+        "current_state": "The user is cleaning a deep fryer in the food truck. The fryer is extremely dirty with accumulated gunk, and a canal within it is jammed.",
+        "expected_next_state": "A clean, functional deep fryer. The user likely expected a more routine cleaning task, not one requiring extensive effort due to severe neglect.",
+        "deviation_type": "correction",
+        "visual_evidence": "The user explicitly states at 200 seconds, 'this fryer was never cleaned' and 'this is totally jammed up', while showing thick, dark gunk being scraped and drained from the fryer.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "reactive",
+        "start_seconds": 45,
+        "deviation_onset_seconds": 200,
+        "end_seconds": 244,
+        "assistant_response": "It looks like that fryer needs a deep clean. Would you like some tips on how to effectively remove stubborn grease and gunk, or perhaps some recommendations for heavy-duty cleaning products?",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The user explicitly states at 200 seconds, 'this fryer was never cleaned' and 'this is totally jammed up', while showing thick, dark gunk being scraped and drained from the fryer.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare the food truck for operation, which includes cleaning the deep fryer.",
+        "current_state": "The user is cleaning a deep fryer in the food truck. The fryer is extremely dirty with accumulated gunk, and a canal within it is jammed.",
+        "expected_next_state": "A clean, functional deep fryer. The user likely expected a more routine cleaning task, not one requiring extensive effort due to severe neglect.",
+        "deviation_type": "correction",
+        "intervention_needed": true,
+        "intervention_timing": "reactive",
+        "intervention_window": {
+          "start_seconds": 45,
+          "deviation_onset_seconds": 200,
+          "end_seconds": 244
+        },
+        "assistant_response": "It looks like that fryer needs a deep clean. Would you like some tips on how to effectively remove stubborn grease and gunk, or perhaps some recommendations for heavy-duty cleaning products?"
+      }
+    },
+    {
+      "id": "yt_yNeRAHL9_LM__clip_0000_0_300",
+      "source_candidate_id": "yt_yNeRAHL9_LM",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "Pov: you are frying today.",
+      "url": "https://www.youtube.com/watch?v=yNeRAHL9_LM",
+      "clip_url": "https://www.youtube.com/watch?v=yNeRAHL9_LM&t=60",
+      "intervention_url": "https://www.youtube.com/watch?v=yNeRAHL9_LM&t=32",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=yNeRAHL9_LM&t=62",
+      "domain": "cooking",
+      "source_family": "YouTube/mr.brownofficial-u1k",
+      "priority": 2,
+      "deviation_type": "correction",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "To prepare a dish that includes properly fried tacos.",
+        "current_state": "The user has fried tacos that are clumped together and unusable for the dish.",
+        "expected_next_state": "The user should have properly fried, separated tacos ready for assembly.",
+        "deviation_type": "correction",
+        "visual_evidence": "The user states 'this chili is done but the tacos are screwed' at 1:02 and later 'Those tacos has to be redone. ... Cuz they're clumped together' at 1:19-1:23. The video shows the clumped tacos being removed from the fryer and later new taco shells being prepared.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "after_deviation_onset",
+        "start_seconds": 60,
+        "deviation_onset_seconds": 62,
+        "end_seconds": 90,
+        "assistant_response": "The tacos appear clumped together. You may need to refry a new batch.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The user states 'this chili is done but the tacos are screwed' at 1:02 and later 'Those tacos has to be redone. ... Cuz they're clumped together' at 1:19-1:23. The video shows the clumped tacos being removed from the fryer and later new taco shells being prepared.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "To prepare a dish that includes properly fried tacos.",
+        "current_state": "The user has fried tacos that are clumped together and unusable for the dish.",
+        "expected_next_state": "The user should have properly fried, separated tacos ready for assembly.",
+        "deviation_type": "correction",
+        "intervention_needed": true,
+        "intervention_timing": "after_deviation_onset",
+        "intervention_window": {
+          "start_seconds": 60,
+          "deviation_onset_seconds": 62,
+          "end_seconds": 90
+        },
+        "assistant_response": "The tacos appear clumped together. You may need to refry a new batch."
       }
     }
   ]

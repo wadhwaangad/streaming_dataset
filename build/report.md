@@ -1,10 +1,10 @@
 # Pipeline Report
 
-Generated: 2026-06-01T01:16:33.400940+00:00
+Generated: 2026-06-18T20:02:35.433432+00:00
 Sources: 0
-Candidates: 9
-VLM-valid candidates: 9
-Curated candidates: 9
+Candidates: 14
+VLM-valid candidates: 14
+Curated candidates: 14
 Awaiting VLM: 0
 Rejected by VLM: 0
 
@@ -19,3 +19,4 @@ Rejected by VLM: 0
 - yt_MkqwDThtQ5s__clip_0000_0_300: score 0 / curated / wrong_action / POV : Cooking Turned Into Nonstop Orders 😅🔥
 - yt_pSM45bJQzak__clip_0000_0_300: score 0 / curated / correction / POV: Foodtruck Cooking | Day in My Life at 26 🍔🍟
 - yt_idGmG57I_RE__clip_0000_0_300: score 0 / curated / wrong_action / POV: BURGER SHOP RUSH HOUR! 🍔🔥 SOLO COOKING 🧑‍🍳 Nonstop Orders & Fries
+- yt_t4g2nV4ftbI__clip_0000_0_300: score 0 / curated / omission / Crazy day At the NEW Restaurant | Rush time 🤯🔥😥
