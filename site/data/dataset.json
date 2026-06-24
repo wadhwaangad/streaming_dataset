@@ -1,7 +1,7 @@
 {
   "name": "Streaming Plan Recovery",
   "task": "Detect when the user's observed trajectory is diverging from their intended plan, and produce a timely intervention that helps them recover.",
-  "generated_at": "2026-06-18T20:02:35.433432+00:00",
+  "generated_at": "2026-06-24T06:01:57.381287+00:00",
   "min_score": 3,
   "verified_only": true,
   "deviation_cues": {
@@ -911,6 +911,130 @@
           "end_seconds": 90
         },
         "assistant_response": "The tacos appear clumped together. You may need to refry a new batch."
+      }
+    },
+    {
+      "id": "yt_jYeF516hdRw__clip_0000_0_300",
+      "source_candidate_id": "yt_jYeF516hdRw",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "Hungarian flavours: potato pasta with paprika and sausage 👌😊👍",
+      "url": "https://www.youtube.com/watch?v=jYeF516hdRw",
+      "clip_url": "https://www.youtube.com/watch?v=jYeF516hdRw&t=64",
+      "intervention_url": "https://www.youtube.com/watch?v=jYeF516hdRw&t=39",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=jYeF516hdRw&t=69",
+      "domain": "cooking",
+      "source_family": "YouTube/MrTsKitchen2023",
+      "priority": 2,
+      "deviation_type": "correction",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 1.0,
+        "goal": "Prepare Hungarian-ish potato pasta with paprika and sausage.",
+        "current_state": "The user has just finished listing ingredients and stated they would start with onions.",
+        "expected_next_state": "The user starts cooking the smoked bacon.",
+        "deviation_type": "correction",
+        "visual_evidence": "The user states 'So, I'm going to start with the onions.' at 1:04, then immediately corrects himself at 1:09 with 'No, I'm lying, I'm going to start with the lardons or smoked bacon.'",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "Immediately after the user states the incorrect first step (1:04).",
+        "start_seconds": 64,
+        "deviation_onset_seconds": 69,
+        "end_seconds": 71,
+        "assistant_response": "Remember, you planned to start with the smoked bacon first.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The user states 'So, I'm going to start with the onions.' at 1:04, then immediately corrects himself at 1:09 with 'No, I'm lying, I'm going to start with the lardons or smoked bacon.'",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare Hungarian-ish potato pasta with paprika and sausage.",
+        "current_state": "The user has just finished listing ingredients and stated they would start with onions.",
+        "expected_next_state": "The user starts cooking the smoked bacon.",
+        "deviation_type": "correction",
+        "intervention_needed": true,
+        "intervention_timing": "Immediately after the user states the incorrect first step (1:04).",
+        "intervention_window": {
+          "start_seconds": 64,
+          "deviation_onset_seconds": 69,
+          "end_seconds": 71
+        },
+        "assistant_response": "Remember, you planned to start with the smoked bacon first."
+      }
+    },
+    {
+      "id": "yt_sAorpQq2EP4__clip_0000_0_300",
+      "source_candidate_id": "yt_sAorpQq2EP4",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "The Best Stroganoff That Never Was 👌😊👍",
+      "url": "https://www.youtube.com/watch?v=sAorpQq2EP4",
+      "clip_url": "https://www.youtube.com/watch?v=sAorpQq2EP4&t=57",
+      "intervention_url": "https://www.youtube.com/watch?v=sAorpQq2EP4&t=156",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=sAorpQq2EP4&t=186",
+      "domain": "cooking",
+      "source_family": "YouTube/MrTsKitchen2023",
+      "priority": 2,
+      "deviation_type": "omission",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 0.9,
+        "goal": "Prepare pork pasta similar to pork stroganoff.",
+        "current_state": "User has fried mushrooms and moved the pan off the heat, but the mushrooms are still in the pan. User is unwrapping and slicing pork.",
+        "expected_next_state": "User removes the fried mushrooms from the pan before continuing with the pork.",
+        "deviation_type": "omission",
+        "visual_evidence": "At 3:06, the user moves the pan with mushrooms off the heat and immediately starts unwrapping the pork, without removing the mushrooms from the pan, despite stating he would \"probably remove them and then continue with the pork.\" He later adds salt (4:21) and garlic (4:40) to the mushrooms still in the pan.",
+        "could_assist_before_user_realizes": true,
+        "intervention_needed": true,
+        "intervention_timing": "Proactive, as soon as he starts preparing the pork without removing the mushrooms.",
+        "start_seconds": 57,
+        "deviation_onset_seconds": 186,
+        "end_seconds": 300,
+        "assistant_response": "Remember to remove the mushrooms from the pan before you start on the pork.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "At 3:06, the user moves the pan with mushrooms off the heat and immediately starts unwrapping the pork, without removing the mushrooms from the pan, despite stating he would \"probably remove them and then continue with the pork.\" He later adds salt (4:21) and garlic (4:40) to the mushrooms still in the pan.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Prepare pork pasta similar to pork stroganoff.",
+        "current_state": "User has fried mushrooms and moved the pan off the heat, but the mushrooms are still in the pan. User is unwrapping and slicing pork.",
+        "expected_next_state": "User removes the fried mushrooms from the pan before continuing with the pork.",
+        "deviation_type": "omission",
+        "intervention_needed": true,
+        "intervention_timing": "Proactive, as soon as he starts preparing the pork without removing the mushrooms.",
+        "intervention_window": {
+          "start_seconds": 57,
+          "deviation_onset_seconds": 186,
+          "end_seconds": 300
+        },
+        "assistant_response": "Remember to remove the mushrooms from the pan before you start on the pork."
       }
     }
   ]

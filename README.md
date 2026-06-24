@@ -109,13 +109,23 @@ Gemini timestamps are treated as absolute seconds in the full YouTube video, not
 
 ## CaptainCook4D Local Qwen Verification
 
-The repo also includes a separate CaptainCook4D path that reads `SabrianLinnn/captain_cook_4d` from Hugging Face and verifies clips with a local 3B video-language model. The default model is `Qwen/Qwen2.5-VL-3B-Instruct`; plain `Qwen2.5-3B` is text-only and cannot inspect video frames.
+The repo also includes a separate CaptainCook4D path that reads `SabrianLinnn/captain_cook_4d` from Hugging Face and verifies clips with a local video-language model. The default model is `HuggingFaceTB/SmolVLM2-500M-Video-Instruct`, which is a better fit for 8GB GPUs than Qwen2.5-VL-3B. Plain `Qwen2.5-3B` is text-only and cannot inspect video frames.
 
 Install the local dependencies in your Python environment:
 
 ```powershell
-pip install datasets transformers accelerate torch qwen-vl-utils
+pip install datasets transformers accelerate torch decord pillow numpy qwen-vl-utils
 ```
+
+On Windows, install `decord` for Qwen video loading. Some `torchvision` builds do not include `torchvision.io.read_video`.
+
+```powershell
+pip install decord
+```
+
+The verifier resolves Hugging Face `hf://` video paths into local cached files before passing them to Qwen, because video readers such as `decord` expect ordinary filesystem paths.
+
+By default, CaptainCook4D rows with no recipe/task, transcript/narration, mistake label, or step/action annotations are rejected before the local model runs. This avoids false positives where the model invents an expected next step from ordinary cooking footage. Use `--raw-candidates` for unlabeled video-only pools: Qwen will inspect the clip, but the prompt and post-check require self-contained visible evidence of an actual failure, correction, or mistake.
 
 Run a small dry run first:
 
@@ -127,7 +137,8 @@ python -m pipeline.build_captaincook_dataset
 Run the actual local verifier:
 
 ```powershell
-python -m pipeline.qwen_captaincook_verify --limit 5 --streaming
+$env:PYTORCH_CUDA_ALLOC_CONF = "expandable_segments:True"
+python -m pipeline.qwen_captaincook_verify --limit 5 --streaming --raw-candidates --dtype bfloat16 --video-nframes 32
 python -m pipeline.build_captaincook_dataset --verified-only
 ```
 
