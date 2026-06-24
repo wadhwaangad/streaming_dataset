@@ -1,7 +1,7 @@
 {
   "name": "Streaming Plan Recovery",
   "task": "Detect when the user's observed trajectory is diverging from their intended plan, and produce a timely intervention that helps them recover.",
-  "generated_at": "2026-06-24T06:01:57.381287+00:00",
+  "generated_at": "2026-06-24T17:21:38.699369+00:00",
   "min_score": 3,
   "verified_only": true,
   "deviation_cues": {
@@ -1035,6 +1035,130 @@
           "end_seconds": 300
         },
         "assistant_response": "Remember to remove the mushrooms from the pan before you start on the pork."
+      }
+    },
+    {
+      "id": "yt_FSMrFu3tFnQ__clip_0000_0_300",
+      "source_candidate_id": "yt_FSMrFu3tFnQ",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "Shaved, Smashed, Seared and Chopped: A New Way to Cook Cheesesteak | Kenji's Cooking Show",
+      "url": "https://www.youtube.com/watch?v=FSMrFu3tFnQ",
+      "clip_url": "https://www.youtube.com/watch?v=FSMrFu3tFnQ&t=109",
+      "intervention_url": "https://www.youtube.com/watch?v=FSMrFu3tFnQ&t=87",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=FSMrFu3tFnQ&t=117",
+      "domain": "cooking",
+      "source_family": "YouTube/JKenjiLopezAlt",
+      "priority": 2,
+      "deviation_type": "correction",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 0.9,
+        "goal": "Make a smashed cheesesteak with perfectly melted cheese and caramelized onions.",
+        "current_state": "User is making a third attempt at a smashed cheesesteak, having previously failed to get the cheese melting and onion bits exactly correct.",
+        "expected_next_state": "User successfully makes a smashed cheesesteak with perfectly melted cheese and caramelized onions.",
+        "deviation_type": "correction",
+        "visual_evidence": "User states, \"The first couple times worked just fine, but um, I I didn't quite get the sort of cheese melting and the onion bits all exactly correct. Um so today I'm going to try one more time and we'll we'll try and correct some of the mistakes I made last time.\"",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": true,
+        "intervention_timing": "after user realizes",
+        "start_seconds": 109,
+        "deviation_onset_seconds": 117,
+        "end_seconds": 120,
+        "assistant_response": "To ensure perfect cheese melting, try covering the cheesesteak with a lid for the last minute. For caramelized onions, cook them separately until deeply browned before adding to the meat.",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "User states, \"The first couple times worked just fine, but um, I I didn't quite get the sort of cheese melting and the onion bits all exactly correct. Um so today I'm going to try one more time and we'll we'll try and correct some of the mistakes I made last time.\"",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "Make a smashed cheesesteak with perfectly melted cheese and caramelized onions.",
+        "current_state": "User is making a third attempt at a smashed cheesesteak, having previously failed to get the cheese melting and onion bits exactly correct.",
+        "expected_next_state": "User successfully makes a smashed cheesesteak with perfectly melted cheese and caramelized onions.",
+        "deviation_type": "correction",
+        "intervention_needed": true,
+        "intervention_timing": "after user realizes",
+        "intervention_window": {
+          "start_seconds": 109,
+          "deviation_onset_seconds": 117,
+          "end_seconds": 120
+        },
+        "assistant_response": "To ensure perfect cheese melting, try covering the cheesesteak with a lid for the last minute. For caramelized onions, cook them separately until deeply browned before adding to the meat."
+      }
+    },
+    {
+      "id": "yt_Hoplhn1XNDw__clip_0000_0_300",
+      "source_candidate_id": "yt_Hoplhn1XNDw",
+      "clip_index": 0,
+      "record_type": "candidate",
+      "title": "NYC Sandwich Challenge vs Binging with Babish",
+      "url": "https://www.youtube.com/watch?v=Hoplhn1XNDw",
+      "clip_url": "https://www.youtube.com/watch?v=Hoplhn1XNDw&t=95",
+      "intervention_url": "https://www.youtube.com/watch?v=Hoplhn1XNDw&t=65",
+      "deviation_onset_url": "https://www.youtube.com/watch?v=Hoplhn1XNDw&t=95",
+      "domain": "cooking",
+      "source_family": "YouTube/FallowChefs",
+      "priority": 2,
+      "deviation_type": "route_failure",
+      "score": 0,
+      "status": "curated",
+      "summary": "",
+      "best_use": "VLM-verified visible plan-deviation clip.",
+      "cue_hits": [],
+      "verifier": {
+        "valid": true,
+        "confidence": 5,
+        "goal": "To make the best sandwich in New York City, starting with research at Salt Hank's.",
+        "current_state": "The user (chef) has just arrived in Manhattan and explicitly states he doesn't know where he is going.",
+        "expected_next_state": "The user should be navigating confidently towards Salt Hank's.",
+        "deviation_type": "route_failure",
+        "visual_evidence": "The chef stating \"I've not really got any idea where I'm going\" at 1:45 while walking on a street in Manhattan.",
+        "could_assist_before_user_realizes": false,
+        "intervention_needed": true,
+        "intervention_timing": "Immediately after the user states they don't know where they are going.",
+        "start_seconds": 95,
+        "deviation_onset_seconds": 95,
+        "end_seconds": 97,
+        "assistant_response": "Salt Hank's is located at [address]. Would you like directions?",
+        "rejection_reason": ""
+      },
+      "curation": {
+        "status": "curated",
+        "reviewer": "gemini",
+        "visual_evidence": "The chef stating \"I've not really got any idea where I'm going\" at 1:45 while walking on a street in Manhattan.",
+        "notes": "Auto-collected from channel feed; VLM must verify."
+      },
+      "rights": {
+        "license": "review_required",
+        "license_status": "unknown",
+        "hosting_status": "external_link_only"
+      },
+      "annotation": {
+        "goal": "To make the best sandwich in New York City, starting with research at Salt Hank's.",
+        "current_state": "The user (chef) has just arrived in Manhattan and explicitly states he doesn't know where he is going.",
+        "expected_next_state": "The user should be navigating confidently towards Salt Hank's.",
+        "deviation_type": "route_failure",
+        "intervention_needed": true,
+        "intervention_timing": "Immediately after the user states they don't know where they are going.",
+        "intervention_window": {
+          "start_seconds": 95,
+          "deviation_onset_seconds": 95,
+          "end_seconds": 97
+        },
+        "assistant_response": "Salt Hank's is located at [address]. Would you like directions?"
       }
     }
   ]

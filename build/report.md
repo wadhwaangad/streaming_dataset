@@ -1,10 +1,10 @@
 # Pipeline Report
 
-Generated: 2026-06-24T06:01:57.381287+00:00
+Generated: 2026-06-24T17:21:38.699369+00:00
 Sources: 0
-Candidates: 16
-VLM-valid candidates: 16
-Curated candidates: 16
+Candidates: 18
+VLM-valid candidates: 18
+Curated candidates: 18
 Awaiting VLM: 0
 Rejected by VLM: 0
 
